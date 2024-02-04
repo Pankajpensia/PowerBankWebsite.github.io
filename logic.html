@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 8px 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+canvas {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <label for="dataInput">Enter data:</label>
+    <input type="text" id="dataInput" placeholder="Enter data">
+
+    <button onclick="generateQRCode()">Generate QR Code</button>
+
+    <canvas id="qrCodeCanvas" width="200" height="200"></canvas>
+  </div>
+
+  <script>
+    function generateQRCode() {
+  const dataInput = document.getElementById('dataInput').value;
+  const canvas = document.getElementById('qrCodeCanvas');
+  const context = canvas.getContext('2d');
+
+  // Clear previous content
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Generate QR code
+  const qrCode = new QRCode(context, dataInput);
+}
+
+// Simple QRCode class for demonstration purposes
+class QRCode {
+  constructor(context, data) {
+    this.context = context;
+    this.data = data;
+
+    this.draw();
+  }
+
+  draw() {
+    // Draw QR code (simplified for demonstration)
+    this.context.fillStyle = '#000';
+    this.context.fillRect(0, 0, this.context.canvas.width, this.context.canvas.height);
+    this.context.fillStyle = '#fff';
+    this.context.font = '20px Arial';
+    this.context.fillText(this.data, 10, 30);
+  }
+}
+
+  </script>
+</body>
+</html>

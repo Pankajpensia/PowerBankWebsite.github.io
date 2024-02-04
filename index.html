@@ -1,0 +1,1177 @@
+<html
+lang="zh-CN"
+style="
+--status-bar-height: 0px;
+--top-window-height: 0px;
+--window-left: 0px;
+--window-right: 0px;
+--window-margin: 0px;
+--window-top: calc(var(--top-window-height) + calc(44px + env(safe-area-inset-top)));
+--window-bottom: calc(50px + env(safe-area-inset-bottom));
+"
+>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Home</title>
+
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+<link rel="stylesheet" href="/static/index.97465e7b.css" />
+<link rel="stylesheet" href="style.css">
+
+<!-- <script type="module" src="script.js"></script> -->
+
+</head>
+<body class="uni-body pages-index-index" style="overflow: visible;">
+<uni-app class="uni-app--showtabbar uni-app--maxwidth">
+
+<!--
+    =====================================================================
+    ============================== Register Page ============================
+    =====================================================================
+-->
+
+
+    <div  class="Pages" id="RegisterPage"  style="display: block;">
+        <!----><!---->
+        <div>
+        <div-body ">
+        <div  >
+        <div   class="flex align-end" style="padding-top: var(--status-bar-height); margin-left: 33px;">
+        <uni-image   class="logo">
+        <div style="background-image: url('/static/img/lg.262fb72f.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+        <!---->
+        <img src="/static/img/lg.262fb72f.png" draggable="false" />
+        </uni-image>
+        <h2   class="text-black margin-left text-Abc">Register</h2>
+        </div>
+        <div   class="padding-tb-sm margin-top" style="width: 362px; background: rgba(255, 255, 255, 0); border-radius: 8px;">
+        <div   class="padding-top" style="margin: 0px 33px;">
+        <div   class="bginp padding-lr-sm flex align-center" style="height: 44px;">
+        <!-- <uni-text   class="iconfont icon-geren1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
+        <uni-input   class="log-input">
+        <div class="uni-input-wrapper">
+        <input maxlength="140" placeholder="Your Name" step="" enterkeyhint="done" autocomplete="off"  type="text" id="UserName" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+        </div>
+        <div   class="bginp padding-lr-sm flex align-center margin-top-sm" style="height: 44px;">
+        <!-- <uni-text   class="iconfont icon-shouji_o margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
+        <uni-input   class="log-input">
+        <div class="uni-input-wrapper">
+        <input maxlength="10" step="0.000000000000000001" placeholder="Phone Number" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="tel" id="MobileNumber" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+       </div>
+        <div   class="bginp padding-lr-sm flex align-center margin-top-sm" style="height: 44px;">
+        <!-- <uni-text   class="iconfont icon-mima1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
+        <uni-input   class="log-input">
+        <div class="uni-input-wrapper">
+        <input maxlength="140" step="" placeholder="Password" enterkeyhint="done" autocomplete="off" id="Password" type="password" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+        <div   class="cuIcon-attention" style="font-size: 20px;"></div>
+        </div>
+        <div   class="bginp padding-lr-sm flex align-center margin-top-sm" style="height: 44px;">
+        <!-- <uni-text   class="iconfont icon-mima1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
+        <uni-input   class="log-input">
+        <div class="uni-input-wrapper">
+        <input maxlength="140" step="" placeholder="Confirm Password" enterkeyhint="done" autocomplete="off" id="ConfirmPassword" type="password" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+        <div  ></div>
+        </div>
+
+        </div>
+        <div   style="margin: 55px 33px 22px;"> <button id="RegisterBtn"   class="cu-btn block lg bg-Log round">Register</ button></div>
+        <div   class="flex align-center justify-between padding-bottom text-black" style="margin: 22px 33px;">
+        <uni-text  ></uni-text><uni-text  ><span id="LoginPageBtn">Login</span></uni-text>
+        </div>
+        </div>
+        </div>
+        </div-body>
+        </div>
+        </div>
+        
+<!--
+    =====================================================================
+    ============================== Login Page ============================
+    =====================================================================
+-->
+
+<div  class="Pages" style="display: none;" id="LoginPage" style="display: none;">
+    <!----><!---->
+    <div>
+    <div-body>
+    <div  >
+    <div   class="padding-tb-lg radius" style="width: 362px; background-color: rgba(255, 255, 255, 0);">
+    <div   class="padding-top-lg text-grey text-shadow text-bold"></div>
+    <div   class="flex justify-center align-end margin-bottom-lg text-center">
+    <uni-image   class="logo">
+    <div style="background-image: url('/static/img/lg.262fb72f.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="/static/img/lg.262fb72f.png" draggable="false" />
+    </uni-image>
+    <h2   class="text-center margin-top-sm margin-left text-black">Login</h2>
+    </div>
+    <div   class="padding-top-lg" style="margin: 0px 33px;">
+    <div   class="bginp padding-lr-sm flex align-center">
+    <uni-input   class="log-input">
+    <div class="uni-input-wrapper">
+    <input maxlength="10" id="LoginMobileNumber" placeholder="Mobile Number" step="0.000000000000000001" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    </div>
+    <div   class="bginp padding-lr-sm flex align-center" style="margin-top: 39px;">
+    <uni-input   class="log-input">
+    <div class="uni-input-wrapper">
+    <input maxlength="140" step="" id="LoginPassword" placeholder="Password" enterkeyhint="done" autocomplete="off" type="password" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    <div   class="cuIcon-attention" style="font-size: 20px;"></div>
+    </div>
+    </div>
+    <div   class="text-right" style="margin: 33px 33px 22px;">
+    <uni-text   class="text-black text-shadow" id="RegisterPageBtn"><span>Register</span></uni-text>
+    </div>
+    <div   style="margin: 66px 33px 22px;"> <button id="LoginBtn"   class="cu-btn block lg bg-Log round">Login</ button></div>
+    </div>
+    </div>
+    </div-body>
+    </div>
+    </div>
+    
+
+<!--
+    =====================================================================
+    ============================== Home Page ============================
+    =====================================================================
+-->
+
+<div  class="Pages" id="HomePage" style="display: none;">
+<div-head div-head-type="default">
+<div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+<div class="div-head-hd">
+<div class="div-head-btn" style="display: none;"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+<div class="div-head-ft"></div>
+</div>
+<div class="div-head-bd">
+<div class="div-head__title" style="font-size: 16px; opacity: 1;">
+<!---->
+Home
+</div>
+</div>
+<!---->
+<div class="div-head-ft"></div>
+</div>
+<div class="uni-placeholder"></div>
+</div-head>
+<!---->
+<div>
+<div-body>
+<div  >
+<uni-swiper   class="card-swiper square-dot">
+<div class="uni-swiper-wrapper">
+<div class="uni-swiper-slides">
+<div class="uni-swiper-slide-frame" style="width: 100%; height: 100%; transform: translate(-81.2081%, 0px) translateZ(0px);">
+<uni-swiper-item   style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+<div   class="swiper-item">
+<a  >
+<uni-image   class="response">
+<div style="background-image: url('https://www.biboapp.net/pics/s1.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat;"></div>
+<!---->
+<img src="https://www.biboapp.net/pics/s1.jpg" draggable="false" />
+</uni-image>
+</a>
+</div>
+</uni-swiper-item>
+<uni-swiper-item   style="position: absolute; width: 100%; height: 100%; transform: translate(100%, 0px) translateZ(0px);">
+<div   class="swiper-item">
+<a  >
+<uni-image   class="response">
+<div style="background-image: url('https://www.biboapp.net/pics/s2.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat;"></div>
+<!---->
+<img src="https://www.biboapp.net/pics/s2.jpg" draggable="false" />
+</uni-image>
+</a>
+</div>
+</uni-swiper-item>
+<uni-swiper-item   style="position: absolute; width: 100%; height: 100%; transform: translate(200%, 0px) translateZ(0px);">
+<div   class="swiper-item">
+<a  >
+<uni-image   class="response">
+<div style="background-image: url('https://www.biboapp.net/pics/s3.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat;"></div>
+<!---->
+<img src="https://www.biboapp.net/pics/s3.jpg" draggable="false" />
+</uni-image>
+</a>
+</div>
+</uni-swiper-item>
+<uni-swiper-item   style="position: absolute; width: 100%; height: 100%; transform: translate(300%, 0px) translateZ(0px);">
+<div   class="swiper-item">
+<a  >
+<uni-image   class="response">
+<div style="background-image: url('https://www.biboapp.net/pics/s4.jpg'); background-position: center center; background-size: cover; background-repeat: no-repeat;"></div>
+<!---->
+<img src="https://www.biboapp.net/pics/s4.jpg" draggable="false" />
+</uni-image>
+</a>
+</div>
+</uni-swiper-item>
+</div>
+</div>
+<div class="uni-swiper-dots uni-swiper-dots-horizontal">
+<div class="uni-swiper-dot" style="background: grey;"></div>
+<div class="uni-swiper-dot uni-swiper-dot-active" style="background: rgb(51, 51, 51);"></div>
+<div class="uni-swiper-dot" style="background: grey;"></div>
+<div class="uni-swiper-dot" style="background: grey;"></div>
+</div>
+</div>
+</uni-swiper>
+<div   class="padding-sm" style="line-height: 1.4; color: rgb(0, 0, 0);">
+<div   class="wxParse" lazyload="true" style="user-select: text;">
+<div class="div">
+<div class="div">
+Headquartered in Mumbai, India, we leverage our industry expertise and global track record to deliver innovative solutions that support the energy transition and sustainability. We offer renewable energy, integrated urban solutions and
+conventional energy in India.
+</div>
+<div class="div"><br /></div>
+<div class="div">
+As India's leading solar power player, we offer 585MWp of solar capacity through ground-mounted, rooftop and floating solar PV systems. Our projects include the Bibo floating solar farm, one of the largest inland floating solar farms in the
+world.
+</div>
+<div class="div"><br /></div>
+<div class="div">We are also one of the largest battery operators in Asia, with the Bibo energy storage system having a maximum storage capacity of 285MWh.</div>
+</div>
+<uni-image data-src="https://www.biboapp.net/pics/c1.jpg" class="img inline" style="width: 100%; height: 284px;">
+<div style="background-image: url('https://www.biboapp.net/pics/c1.jpg'); background-size: 100% 100%; background-repeat: no-repeat;"></div>
+<uni-resize-sensor>
+<div><div></div></div>
+<div><div></div></div>
+</uni-resize-sensor>
+<img src="https://www.biboapp.net/pics/c1.jpg" draggable="false" />
+</uni-image>
+<div class="div">
+<div class="div">
+Bibo's 150 MW solar project at Adani Solar Unit 2 in Jaisalmer, Rajasthan, India, has been successfully commissioned. The owner of this power plant in the Bikaner region will sell electricity to third parties or through power transactions.
+Electricity sold. And the photovoltaic installed capacity in Rajasthan, Gujarat and Karnataka accounts for more than 50% of the total installed capacity, and the cumulative installed solar capacity reaches 70.10 GW.
+</div>
+<div class="div"><br /></div>
+<div class="div">
+Bibo is one of India's largest renewable energy companies. It is an important manifestation of the company's commitment to "delivering a better, cleaner and greener future for India". At present, a number of solar and wind energy projects
+have been put into operation, with the total installed capacity of the projects exceeding 20GW, of which the installed capacity of solar energy in operation is approximately 5GW, and the installed capacity of projects under construction is
+approximately 10.63GW.
+</div>
+</div>
+<uni-image data-src="https://www.biboapp.net/pics/c2.jpg" class="img inline" style="width: 100%; height: 284px;">
+<div style="background-image: url('https://www.biboapp.net/pics/c2.jpg'); background-size: 100% 100%; background-repeat: no-repeat;"></div>
+<uni-resize-sensor>
+<div><div></div></div>
+<div><div></div></div>
+</uni-resize-sensor>
+<img src="https://www.biboapp.net/pics/c2.jpg" draggable="false" />
+</uni-image>
+</div>
+</div>
+<!---->
+</div>
+</div-body>
+</div>
+</div>
+
+<!--
+    =====================================================================
+    ============================== Product Page ============================
+    =====================================================================
+-->
+
+<div  class="Pages" id="ProductPage" style="display: none;">
+    <div-head div-head-type="default">
+    <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+    <div class="div-head-hd">
+    <div class="div-head-btn" style="display: none;"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="div-head-bd">
+    <div class="div-head__title" style="font-size: 16px; opacity: 1;">
+    <!---->
+    Product
+    </div>
+    </div>
+    <!---->
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="uni-placeholder"></div>
+    </div-head>
+    <!---->
+    <div style=" position: relative; left: -22px;">
+    <div-body>
+    <div  >
+   
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Elite Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>100</span></uni-text><uni-text   class="source_price margin-left-sm"></uni-text>
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">10</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="EliteProductBuyBtn" class="cu-btn radius bg-red" style="width: 166px;">
+    <!---->
+    <div   class="flex align-center">
+    <uni-text   class="cuIcon-time margin-right-xs"><span></span></uni-text>
+    <div data-v-679e1595=""   class="u-count-down">
+    <uni-text data-v-679e1595="" class="u-count-down__text"><span>Buy</span></uni-text>
+    </div>
+    </div>
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Elite Pro Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>200</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">20</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="EliteProProductBuyBtn"  class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Silver Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>500</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">30</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="SilverProductBuyBtn" class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Silver Pro Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>1000</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">100</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="SilverProProductBuyBtn" class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Gold Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>1500</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">150</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="GoldProductBuyBtn" class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Diamond Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>2000</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">200</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button  id="DiamondProductBuyBtn" class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Premium Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>2500</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">250</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="PremiumProductBuyBtn" class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </ button>
+    </div>
+    </div>
+    </div>
+    <div   class="margin-left-lg margin-tb padding-tb-sm" style="background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(170, 170, 170);">
+    <div   class="padding-bottom padding-right flex">
+    <div  >
+    <div   class="margin-bottom flex align-center">
+    <uni-text   class="text-black text-bold"><span>Premium Pro Project</span></uni-text>
+    </div>
+    <uni-image   class="radius" style="width: 208px; height: 138px; box-shadow: rgb(170, 170, 170) 2px 2px 11px 0px;">
+    <div style="background-image: url('https://www.biboapp.net/pics/ppp.jpg'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="https://www.biboapp.net/pics/ppp.jpg" draggable="false" />
+    </uni-image>
+    </div>
+    <div   class="margin-left flex flex-direction justify-between">
+    <div  >
+    <uni-text   class="text-price text-red text-xl"><span>3000</span></uni-text>
+    <!---->
+    </div>
+    <div   class="flex">
+    <div   style="width: 89px;"><div   class="text-cycle">30</div><div   class="margin-top-sm text-sm">Cycle</div></div>
+    <div  ><div   class="text-price">300</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+     <button id="PremiumProProductBuyBtn"  class="cu-btn radius bg-blue" style="width: 166px;">
+    <uni-text  >
+    <span>
+    <uni-text   class="cuIcon-cart margin-right"><span></span></uni-text><uni-text  ><span>Buy</span></uni-text>
+    </span>
+    </uni-text>
+    <!---->
+    </ button>
+    </div>
+    </div>
+    </div>
+    <div   class="cu-modal">
+    <div   class="cu-dialog bg-mask">
+    <div  >
+    <div   class="flex align-center justify-between padding-lg bg-tc" style="width: 100%;">
+    <div   class="flex">
+    <uni-image   style="width: 59px; height: 59px; border-radius: 5px;">
+    <div style="background-image: none; background-position: center center; background-size: cover; background-repeat: no-repeat;"></div>
+    <!---->
+    </uni-image>
+    <div   class="flex flex-direction justify-between padding-top-xs margin-left-xs text-black">
+    <div   class="text-bold text-sm" style="font-style: italic;"></div><div   class="text-cycle text-left"></div>
+    </div>
+    </div>
+    <!---->
+    </div>
+    <div   class="bg-white padding-top-xs">
+    <div   class="flex justify-around align-center margin-lr bg-white margin-top-xl" style="border-radius: 11px;">
+    <div   class="radius"><div   class="text-lg text-black text-price">NaN</div><div   class="margin-top-sm text-sm">Hourly</div></div>
+    <div   class="bg-grey" style="height: 47px; width: 1px;"></div>
+    <div   class="padding-tb-sm radius"><div   class="text-lg text-black text-price">NaN</div><div   class="margin-top-sm text-sm">Daily</div></div>
+    </div>
+    <div   class="flex justify-between align-center" style="padding: 59px 35px 35px;">
+    <div   class="text-left">
+    <uni-text   class="text-price text-red" style="font-size: 160%;"><span>NaN</span></uni-text>
+    </div>
+    <div     class="uni-numbox">
+    <div   class="uni-numbox__minus uni-numbox-btns" style="background: rgb(229, 77, 66);">
+    <uni-text   class="uni-numbox--text uni-numbox--disabled" style="color: rgb(255, 255, 255);"><span>-</span></uni-text>
+    </div>
+    <uni-input   class="uni-numbox__value" style="background: rgb(229, 77, 66); color: rgb(255, 255, 255);">
+    <div class="uni-input-wrapper">
+    <div class="uni-input-placeholder input-placeholder"     style="display: none;"></div>
+    <input maxlength="140" step="0.000000000000000001" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    <div   class="uni-numbox__plus uni-numbox-btns" style="background: rgb(229, 77, 66);">
+    <uni-text   class="uni-numbox--text" style="color: rgb(255, 255, 255);"><span>+</span></uni-text>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div   class="padding-lr-lg padding-tb-xl flex justify-between bg-List">
+     <button   class="cu-btn block radius lg line-black" style="width: 166px;">Cancel</ button>
+     <button   class="cu-btn block lg radius bg-gray text-grey" style="width: 166px;">
+    <uni-text   class="margin-left-sm"><span>Confirm</span></uni-text>
+    </ button>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div-body>
+    </div>
+    </div>
+
+<!--
+    =====================================================================
+    ============================== Profile Page ============================
+    =====================================================================
+-->
+
+<div class="Pages" id="ProfilePage" style="display: none;">
+    <!----><!---->
+    <div>
+    <div-body>
+    <div  >
+    <div   class="bg-card topsticky flex flex-direction justify-end" style="background-position: center center; background-size: cover; background-image: url('../../static/pic/bgtop.png');">
+    <div   class="padding-lr-xl padding-tb flex justify-between align-center">
+    <div   class="flex align-end">
+    <uni-image   style="width: 53px; height: 53px; border-radius: 8px;">
+    <div style="background-image: url('/static/img/lg.262fb72f.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="/static/img/lg.262fb72f.png" draggable="false" />
+    </uni-image>
+    <div   class="text-xl text-white margin-left-xs" id="NavUserName">Offline</div>
+    </div>
+    <div   class="text-center" id="DailyCheckIn">
+    <uni-image   class="bg-green round padding-xs" style="width: 47px; height: 47px;">
+    <div style="background-image: url('/static/img/qd.09b97663.png'); background-position: 0% 0%; background-size: 100% 100%; background-repeat: no-repeat;"></div>
+    <!---->
+    <img src="/static/img/qd.09b97663.png" draggable="false" />
+    </uni-image>
+    </div>
+    </div>
+    <div   class="flex justify-between align-center text-center bg-Bk margin-lr-lg" style="border-radius: 11px 11px 0px 0px; margin-top: 23px;">
+    <div   class="padding text-center" style="border-radius: 8px; width: 178px;">
+    <div   class="text-price" id="Balance">0.00</div><div   class="text-sm margin-top-sm">Balance</div>
+    </div>
+    <div   class="bg-grey" style="width: 1px; height: 47px;"></div>
+    <div   class="padding flex justify-center" style="border-radius: 8px; width: 178px;">
+     <button   class="cu-btn bg-gradual-blue shadow text-xl" id="RechargePageBtn" style="height: 59px; width: 59px; border-radius: 50%;">
+    <uni-text   style="font-size: 200%;"><span>+</span></uni-text>
+    </ button>
+    </div>
+    </div>
+    </div>
+      <!---->
+    <div   class="padding-tb padding-lr-xs flex justify-around bg-Bk margin-lr-lg" style="border-radius: 0px 0px 11px 11px;">
+    <div   class="text-center">
+    <uni-image   class="bg-green round padding-xs" style="width: 47px; height: 47px;">
+    <div
+    style="
+    background-image: url('data:image/png;base64,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');
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    "
+    ></div>
+    <!---->
+    <img
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAAAXNSR0IArs4c6QAADXVJREFUeF7tnWnoblUVxp+nCD804Y2yD2UfhDBLbTIaVLyZDVRIH7KRbNDSwJIsI6Ts+kEMizIry1ILCdOiwoqyJG9lmWGTTRQ2D0QSNliUISsWHevf9f7P2Wef/e6zh2fDy73w33utdZ5n/94z75dQkwJSYFsFKG2kgBTYXgEBotkhBUYUECCaHlJAgGgOSIE4BbQHidNNozpRQIB0YrQ2M04BARKnm0Z1ooAA6cRobWacAgIkTjeN6kQBAdKJ0drMOAUESJxuGtWJAgKkE6O1mXEKCJA43TSqEwUESCdGazPjFBAgcbppVCcKCJBOjNZmxikgQOJ006hOFBAgnRitzYxTQIDE6aZRnSggQDoxWpsZp4AAidNNozpRQIB0YrQ2M04BARKnm0Z1ooAA6cRobWacAgIkTjeN6kQBAdKJ0drMOAUESJxuGtWJAgKkE6O1mXEKCJA43TSqEwUESCdGazPjFBAgcbppVCcKCJBOjNZmxikgQOJ0SzbKzPYH8Ijhc3cAe37uBuBvAG7d8q///8cAvk3yh8mKUaA7KSBAMk4KM9sPwOMAHA7g4QMUOxaWcJuDAuA7AL4O4FqSNy2MqeGDAgJkg1PBzA4AcASARwN4wgDFBjP+N/QvAHwZwA0Arif5jRxJW8whQBK7amb3B/CMLZ+7Jk4RE+5aAJ/2D8kfxATodYwASeS8mR0L4LgBjHslCruJMFcB+ASAi0n+axMJWoopQBa6aWbPB/ASAE9aGCr3cN+TXDyA8qfcyWvJJ0AinTKzEwC8dDjpjoxSxLCfA7gEwHtI/rGIigoqQoDMNMPMdgJ4PYCnzBxaevcfAXgLyQ+VXmjO+gRIoNpmdr8BjNcEDlnSzc8N/gDgZgB/B+C57wvg3kuCBo792ACKXwHrvgmQgClgZi8A8CYADw7oHtrl8wC+NEDgINwBxM0k93pOYGb7DLA4MFs/fk/l6QkB+scAyZtDN6bVfgJkwlkzeyOAsxJMgD8DuBLApwBcRfIvCWL+XwgzOxLA0wZYDk4Q3/cmp5H8VYJYVYYQINvYZmb+yMe7ALx4gbM/dRju+JD854JYs4aame9VjtnymTV+S2c/N3FIPhsboOZxAmQv7pmZf/s6HP6NHNO+CeBCkhfGDE49xsweBeDlwyc2/Okkz40dXOs4AbKHc8MNP4fjARGmFgXGnvUnAOWdJF8doUu1QwTIFuvM7GUAPhDhZtFgJAblCpLPidCoyiECZLDNzE4D8NaZLn7PD8VKOZSaWTsW7FF2k/T7Qc03AQL4RDndL2vOdPuTAE4h+ZuZ44rrbmYnAjgfgF9GDm1Xk/SLAE237gExs2cDuGKmy28j+dqZY4ruPlwivgDAQTMKvYDkK2f0r65r14BEwHE7gONJfrg6pwMLNjO/V/PMwO7ebRfJZm8odgtIBBw/AfBIkv76a9PNzPxZs3NmbGSzkHQJiJkdBuBqAKHvbfiJ+CkzJkz1Xc3sQAB+kzC0nUgy5gpgaPxV+vUKiD8HFXqCeQ7JN6zizspJzcy/QPwRmZDmz5IdTfL7IZ1r6dMdIGbmz1X581Uh7XySrwrp2GofM3sogNBJfyVJf7OymdYVIGbmT7z6u9kh7SKS/lJU983Mngog9FmsM0ie3Ypo3QAyPHz4lWGpnSn/PkLyeVOdevr7cK8k9NmyI0j6QhHVt54ACT208qdvj8355G0ts8jMdg3vxUyV7KunzLlUPBVvtb93AYiZPcYXVAPgqxSOtW8NcFR/d3xTM8rMfKEHX6Riqp1E8n1TnUr/ey+AfBzAswLMOIakX/5V20YBM9t3eBNy6oUsXwzCD7V+W7OYzQNiZr7yyEUBJnX3KHeAJnvtYma+/tflAeOrvwrYAyDXA/BDrLHm33aHk/xdgOnq8p8HPN8PYOoqnz+a408f3FiraE0DYmYvBHBpgDlNHC8HbGeyLmb2oOFQy/8da+eRPDVZ4syBWgfkiwCm3lv4DElfS1dtpgLD4nm+JxlrvjiF70X8/fzqWrOAmJmflPvJ+VQ7kqTfH1GLUMDM/FzEz0nG2tkkz4gIv/qQlgHx5XWm9gznkvSXpdQiFRgWuPD1vfzq1nbt9wAOJenPa1XVmgRkMG3qxNB3/YeQ/GVVjhVYrJn5q8r+yvJYO5XkeQWWP1pSq4CELPbmy/K8ojbDSqzXzPxXs742UZv/kM9jS6x/rKZWAfF1ZX0tqLH2RJLX1GZYqfWamd9gPXqiPn+Ex99YrKY1B4iZ+e90fGHCgS4WHMg5C83sZP8JhYmcl5H031OpprUIyDsATC1udgLJkLvr1Ri5dqHD6vf+i7v3majlgTWtBNMiIL5W1cNGTPoZgINJ+s8KqCVUwMz84URf4nSsHUfyownTbjRUU4CY2SEAvjuhWLXX5Dc6ExIENzP/UaHPTYR6O8kcv7GSYIuA1gDxtaqmFlj2vUfoK6RJRO4piJn5T077ohjbtetIPr4WTVoDxF92evKI+DeSPLQWc2qs08x88bmTJmrfh+RtNWxfa4DYhOiXknxRDcbUWqOZORwOyVjbSXJ3DdvYDCBmdgCAmyZEfx3JuQtU1+BjMTWamd8MvG6ioGquIrYEiB9a+SHWWPN1m/wJX7UNKWBmdxnW0rrHSIpqLpS0BEjIrv2eJG/d0NxQ2EEBM/sqgLET8ctJPrcGwVoCxK9eja24rhP0TDPSzN4NYGzV9xtIjl3pylTpdJqWAJlamOESkv5+utqGFTCz4wF8cCTNLSR3bLiMJOFbAmRqt34yyfcmUU1BRhUws4cA8MdOxloVl3pbAsTvoPud9O1aNZcWW+DPzKYuue8geUvp29oSIH6J1y/1CpACZl0AIPuT/HUBpY6W0BIg/lrnfgKkjCkXAMhBJOf8/sgqG9YSIH8FMHbtXYdYGadYACCHkfQX24puLQEydcwrQDJOxQBAqvBDgGScND2lEiCFud2KIYXJGl1OK35oDxI9BTRwTAEBUtj8aMWQwmSNLqcVP7QHiZ4CGqg9SEVzoJVvrIokHy21FT+0B2llRha2HQJEhhSmQFnlCJCy/PBfPNKNwoI8acUPHWIVNKlaKkWAFOZmK4YUJmt0Oa34oT1I9BTQQF3mrWgOtPKNVZHkusxbk1kCpCy3WvFDh1hlzatmqhEghVnZiiGFyRpdTit+aA8SPQU0UCfpFc2BVr6xKpJcJ+k1mSVAynKrFT90iFXWvGqmGgGS0UozOwrAmRMpvc9Yq2KRgIyybjRVACCTvw9CcudGiwwIXsUeZABk6W+aC5CACZGqSwAgU6l2C5ApiYa/C5BAoQrqJkAymiFAMoqdKJUASSRkSBgBEqJSWX0ESEY/BEhGsROlEiCJhAwJI0BCVCqrjwDJ6IcAySh2olQCJJGQIWEESIhKZfURIBn9ECAZxU6USoAkEjIkjAAJUamsPgIkox8CJKPYiVIJkERChoQRICEqldVHgGT0Q4BkFDtRKgGSSMiQMAIkRKWy+giQjH4IkIxiJ0olQBIJGRJGgISoVFYfAZLRDwGSUexEqQRIIiFDwgiQEJXK6iNAMvohQDKKnSiVAEkkZEgYARKiUll9BEhGPwRIRrETpRIgiYQMCSNAQlQqq48AyeiHAMkodqJUAiSRkCFhBEiISmX1ESAZ/RAgGcVOlEqAJBIyJIwACVGprD4CJKMfAiSj2IlSCZBEQoaEESAhKpXVR4Bk9EOAZBQ7USoBkkjIkDACJESlsvoIkIx+CJCMYidKJUASCRkSRoCEqFRWHwGS0Q8BklHsRKkESCIhQ8IIkBCVyuojQDL6IUAyip0olQBJJGRIGAESolJZfQRIRj8ESEaxE6USIImEDAkjQEJUKquPAMnohwDJKHaiVAIkkZAhYQRIiEpl9REgGf0QIBnFTpRKgCQSMiSMAPmfSmZ2DYCjQnTbrg9JLhkfMlaAhKiUqI8AESCJptLsMBv/Jpld0V4GCBABkmIexcQQIDGqrThGh1h5xRcgefVenE2ALJZwVgABMkuu9TsLkLweCJC8ei/OJkAWSzgrgACZJdf6nQVIXg8ESF69F2dLAQiA3YsLmQ6w6F6N10hy53SazfYQIJvVN3n0RIAkr2sDAQVIqKi6D5L2Pkio7iv3EyChBggQARI6V1L30yFWakU3HE+HWBsWeI/wAiSv3ouzCZDFEs4KIEBmybV+ZwGS1wMBklfvxdkEyGIJZwWoCZAzZ23ZnTvvIpnj+v/CMseHD4BsNEcpwXUfpBQnVIcU2EaBKvYgck8KrKWAAFlLeeWtQgEBUoVNKnItBQTIWsorbxUKCJAqbFKRaykgQNZSXnmrUECAVGGTilxLAQGylvLKW4UCAqQKm1TkWgoIkLWUV94qFBAgVdikItdSQICspbzyVqGAAKnCJhW5lgICZC3llbcKBQRIFTapyLUUECBrKa+8VSggQKqwSUWupYAAWUt55a1CAQFShU0qci0FBMhayitvFQoIkCpsUpFrKSBA1lJeeatQQIBUYZOKXEsBAbKW8spbhQICpAqbVORaCgiQtZRX3ioUECBV2KQi11JAgKylvPJWoYAAqcImFbmWAgJkLeWVtwoFBEgVNqnItRQQIGspr7xVKPBv+GZrFCLcCd0AAAAASUVORK5CYII="
+    draggable="false"
+    />
+    </uni-image>
+    <div   class="margin-top-xs text-black text-sm text-shadow">Online</div>
+    </div>
+    <div   class="text-center">
+    <uni-image   class="bg-black round padding-xs" id="BankPageBtn" style="width: 47px; height: 47px;">
+    <div
+    style="
+    background-image: url('data:image/png;base64,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');
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    "
+    ></div>
+    <!---->
+    <img
+    src="data:image/png;base64,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"
+    draggable="false"
+    />
+    </uni-image>
+    <div   class="margin-top-xs text-black text-sm text-shadow">Bind bank</div>
+    </div>
+    <div   class="text-center">
+    <uni-image   class="bg-red round padding-xs" id="WithdrawalPageBtn" style="width: 47px; height: 47px;">
+    <div
+    style="
+    background-image: url('data:image/png;base64,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');
+    background-position: 0% 0%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    "
+    ></div>
+    <!---->
+    <img
+    src="data:image/png;base64,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"
+    draggable="false"
+    />
+    </uni-image>
+    <div   class="margin-top-xs text-black text-sm text-shadow">Withdraw</div>
+    </div>
+    </div>
+ 
+    <div   class="padding"> <button   class="cu-btn bg-green round block lg margin-lr-xl" id="LogOutBtn">Logout</button></div>
+    </div>
+    </div-body>
+    </div>
+    </div>
+
+<!--
+    =====================================================================
+    ============================== Recharge Page ============================
+    =====================================================================
+-->
+
+<div  class="Pages" id="RechargePage" style="display: none;">
+    <div-head div-head-type="default">
+    <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+    <div class="div-head-hd">
+    <!-- <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div> -->
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="div-head-bd">
+    <div class="div-head__title" style="font-size: 14px; opacity: 1;">
+    <!---->
+    Recharge  
+    </div>
+    </div>
+    <!---->
+
+    </div>
+    <div class="uni-placeholder"></div>
+    </div-head>
+    <!---->
+    <div>
+    <div-body>
+    <div  >
+    <div
+     
+    class="flex flex-direction justify-center bg-white"
+    style="border-radius: 7px; width: 312px; margin: 0px 24px; background-position: center center; background-size: cover; background-image: url('https://www.biboapp.net/pics/bg.png');"
+    >
+    <div   style="border-radius: 7px;">
+    <uni-form  >
+    <span>
+    <div  class="padding-sm">
+    <div  class="cu-form-group margin-top ys radius">
+    <div  class="title text-red" style="font-size: 130%;">₹</div>
+    <div  class="bginp padding-lr-sm flex align-center">
+        <uni-input   class="log-input">
+        <div class="uni-input-wrapper">
+        <input maxlength="10" id="RechargeAmount" placeholder="Recharge Amount" step="0.000000000000000001" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+        </div>
+    </div>
+    </div>
+    </span>
+    </uni-form>
+    <div   class="grid col-3 text-center padding-lr-lg padding-tb"></div>
+    </div>
+    </div>
+
+    <div   style="width: 312px; margin: 0px 24px;">
+   
+    <div class="padding-lr-lg" style="margin-left: 50px; width: 150px;">
+         <a href="" class="cu-btn block lg radius bg-green shadow" id="PaymentBtn">Payment</a></div>
+    </div>
+    <span class="text-center" style="    
+    position: relative;
+    top: 22px;
+    margin: 10px 10px;
+    margin-left: 10px;
+    color: red;">after your payment will be done then click on &nbsp;&nbsp; make order and create your payment order</span>
+    </div>
+    <button id="OrderPageBtn" style="position: absolute;
+    width: 100px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 1%);
+    background: red;
+    color: white;
+    border: 1px solid white;
+    border-radius: 10px;">Make Order</button>
+    </div-body>
+    </div>
+    </div>
+
+    <div  class="Pages" id="OrderPage" style="display: none;">
+        <div-head div-head-type="default">
+        <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+        <div class="div-head-hd">
+        <!-- <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div> -->
+        <div class="div-head-ft"></div>
+        </div>
+        <div class="div-head-bd">
+        <div class="div-head__title" style="font-size: 14px; opacity: 1;">
+        <!---->
+        Make Order  
+        </div>
+        </div>
+        <!---->
+    
+        </div>
+        <div class="uni-placeholder"></div>
+        </div-head>
+        <!---->
+        <div>
+        <div-body>
+        <div  >
+        <div
+         
+        class="flex flex-direction justify-center bg-white"
+        style="border-radius: 7px; width: 312px; margin: 0px 24px; background-position: center center; background-size: cover; background-image: url('https://www.biboapp.net/pics/bg.png');"
+        >
+        <div   style="border-radius: 7px;">
+        <uni-form  >
+        <span>
+        <div  class="padding-sm">
+        <div  class="cu-form-group margin-top ys radius">
+        <div  class="title text-red" style="font-size: 100%;">Method</div>
+        <div  class="bginp padding-lr-sm flex align-center">
+            <uni-input   class="log-input">
+            <div class="uni-input-wrapper">
+            <input maxlength="10" id="PaymentMethodName" placeholder="Phonepe, Paytm" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input" />
+            <!---->
+            </div>
+            </uni-input>
+            </div>
+        </div>
+        <div  class="cu-form-group margin-top ys radius">
+            <div  class="title text-red" style="font-size: 100%;">Payment UserName</div>
+            <div  class="bginp padding-lr-sm flex align-center">
+                <uni-input   class="log-input">
+                <div class="uni-input-wrapper">
+                <input maxlength="10" id="PaymentUserName" placeholder="Phone/Paytm user name" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input" />
+                <!---->
+                </div>
+                </uni-input>
+                </div>
+            </div>
+        <div  class="cu-form-group margin-top ys radius">
+            <div  class="title text-red" style="font-size: 100%;">Payment UPI/Number</div>
+            <div  class="bginp padding-lr-sm flex align-center">
+                <uni-input   class="log-input">
+                <div class="uni-input-wrapper">
+                <input maxlength="100" id="PaymentUPI" placeholder="1903@phonepe" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input" />
+                <!---->
+                </div>
+                </uni-input>
+                </div>
+            </div>
+            <div  class="cu-form-group margin-top ys radius">
+                <div  class="title text-red" style="font-size: 100%;">Amount</div>
+                <div  class="bginp padding-lr-sm flex align-center">
+                    <uni-input   class="log-input">
+                    <div class="uni-input-wrapper">
+                    <input maxlength="10" id="PayAmount" placeholder="100" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="number" class="uni-input-input" />
+                    <!---->
+                    </div>
+                    </uni-input>
+                    </div>
+                </div>
+                <div  class="cu-form-group margin-top ys radius">
+                    <div  class="title text-red" style="font-size: 100%;">Date</div>
+                    <div  class="bginp padding-lr-sm flex align-center">
+                        <uni-input   class="log-input">
+                        <div class="uni-input-wrapper">
+                        <input maxlength="10" id="PaymentDate"  step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="date" class="uni-input-input" />
+                        <!---->
+                        </div>
+                        </uni-input>
+                        </div>
+                    </div>
+                    <div  class="cu-form-group margin-top ys radius">
+                        <div  class="title text-red" style="font-size: 100%;">Time</div>
+                        <div  class="bginp padding-lr-sm flex align-center">
+                            <uni-input   class="log-input">
+                            <div class="uni-input-wrapper">
+                            <input maxlength="10" id="PaymentTime" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="time" class="uni-input-input" />
+                            <!---->
+                            </div>
+                            </uni-input>
+                            </div>
+                        </div>
+                        
+                           
+        </div>
+        </span>
+        </uni-form>
+        <div   class="grid col-3 text-center padding-lr-lg padding-tb"></div>
+        </div>
+        </div>
+    
+        <div   style="width: 312px; margin: 0px 24px;">
+       
+        <div class="padding-lr-lg" style="margin-left: 50px; width: 150px;">
+             <button href="" class="cu-btn block lg radius bg-green shadow" id="PaymentOrderBtn">Payment</button></div>
+        </div>
+         </div>
+       
+        </div-body>
+        </div>
+        </div>
+    
+
+<!--
+    =====================================================================
+    ============================== Widrawal Page ============================
+    =====================================================================
+-->
+
+<div  class="Pages" id="WithdrawalPage" style="display: none;">
+    <div-head div-head-type="default">
+    <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+    <div class="div-head-hd">
+    <!-- <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div> -->
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="div-head-bd">
+    <div class="div-head__title" style="font-size: 14px; opacity: 1;">
+    <!---->
+    Withdrawal
+    </div>
+    </div>
+    <!---->
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="uni-placeholder"></div>
+    </div-head>
+    <!---->
+    <div>
+    <div-body>
+    <div  >
+    <div   style="border-radius: 7px;">
+    <uni-form  >
+    <span>
+    <div  >
+    <div   class="padding-lg margin bg-white" style="border-radius: 9px; background-position: center center; background-size: cover; background-image: url('https://www.biboapp.net/pics/bg.png');">
+    <div   class="padding-lg text-bold" style="font-style: italic;">Arrive quickly</div>
+    <div   class="padding-lr-lg">
+    <div   class="cu-form-group margin-top ys radius" style="border: 1px solid rgb(170, 170, 170);">
+    <div   class="title text-red" style="font-size: 150%;">₹</div>
+    <uni-input style="color: rgb(229, 77, 66);">
+    <div class="uni-input-wrapper">
+    <input maxlength="140" id="WithdrawalAmount" step="0.000000000000000001" placeholder="Withdrawal Amount" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    </div>
+    <div   class="cu-form-group margin-top ys radius" style="border: 1px solid rgb(170, 170, 170);">
+        <div   class="title text-red" style="font-size: 150%;">UPI</div>
+        <uni-input style="color: rgb(229, 77, 66);">
+        <div class="uni-input-wrapper">
+        <input maxlength="140" id="WithdrawalUPI" step="0.000000000000000001" placeholder="Withdrawal UPI" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="text" class="uni-input-input" />
+        <!---->
+        </div>
+        </uni-input>
+        </div>
+    </div>
+    <div   class="padding-lr-lg" style="margin: 76px 0px 19px;"> 
+        <button id="WithdrawalBtn" class="cu-btn block lg radius bg-Log shadow">Submit</button></div>
+    </div>
+    </div>
+    </span>
+    </uni-form>
+    </div>
+    </div>
+    </div-body>
+    </div>
+    </div>
+
+<!--
+    =====================================================================
+    ============================== Bank Page ============================
+    =====================================================================
+-->
+
+<div  id="BankPage" style="display: none;">
+    <div-head div-head-type="default">
+    <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+    <div class="div-head-hd">
+    <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="div-head-bd">
+    <div class="div-head__title" style="font-size: 14px; opacity: 1;">
+    <!---->
+    Bind bank
+    </div>
+    </div>
+    <!---->
+    <div class="div-head-ft"></div>
+    </div>
+    <div class="uni-placeholder"></div>
+    </div-head>
+    <!---->
+    <div>
+    <div-body>
+    <div data-v-e27e67ca="">
+    <div data-v-e27e67ca="" class="bgBank" style="width: 312px;">
+    <div data-v-e27e67ca="" class="padding-tb padding-lr-lg flex justify-between a" style="border-radius: 7px 7px 0px 0px;">
+    <div data-v-e27e67ca="">
+    <uni-text data-v-e27e67ca="" class="margin-right-xs text-sm"><span>Name:</span></uni-text><uni-text data-v-e27e67ca=""><span></span></uni-text>
+    </div>
+    </div>
+    <div data-v-e27e67ca="" class="padding-tb padding-lr-lg a">
+    <uni-text data-v-e27e67ca="" class="margin-right-xs text-sm"><span>Card number:</span></uni-text><uni-text data-v-e27e67ca=""><span></span></uni-text>
+    </div>
+    <div data-v-e27e67ca="" class="padding-tb padding-lr-lg flex justify-between align-center a">
+    <div data-v-e27e67ca="">
+    <uni-text data-v-e27e67ca="" class="margin-right-xs text-sm"><span>IFSC:</span></uni-text><uni-text data-v-e27e67ca="" class="text-ABC"><span></span></uni-text>
+    </div>
+    <div data-v-e27e67ca="" class="round flex justify-between" style="width: 48px; height: 9px;"></div>
+    </div>
+    </div>
+    <div data-v-e27e67ca="" style="width: 312px;">
+    <uni-form data-v-e27e67ca="">
+    <span>
+    <div data-v-e27e67ca="" class="padding-tb-xl bgP" style="border-radius: 0px 0px 7px 7px;">
+    <div data-v-e27e67ca="" class="margin-lr-lg">
+    <div data-v-e27e67ca="" class="cu-form-group ys radius bginp">
+    <uni-text data-v-e27e67ca="" class="iconfont icon-geren1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text>
+    <uni-input data-v-e27e67ca="">
+    <div class="uni-input-wrapper">
+    <div class="uni-input-placeholder input-placeholder" data-v-e27e67ca="">Your name</div>
+    <input maxlength="140" step="" enterkeyhint="done" autocomplete="off" type="" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    </div>
+    <div data-v-e27e67ca="" class="cu-form-group ys margin-top radius bginp">
+    <uni-text data-v-e27e67ca="" class="iconfont icon-yinxingqia1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text>
+    <uni-input data-v-e27e67ca="">
+    <div class="uni-input-wrapper">
+    <div class="uni-input-placeholder input-placeholder" data-v-e27e67ca="">Bank account number</div>
+    <input maxlength="140" step="0.000000000000000001" enterkeyhint="done" pattern="[0-9]*" autocomplete="off" type="number" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    </div>
+    <div data-v-e27e67ca="" class="cu-form-group ys margin-top radius text-ABC bginp">
+    <uni-text data-v-e27e67ca="" class="iconfont icon-yinxingqia1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text>
+    <uni-input data-v-e27e67ca="">
+    <div class="uni-input-wrapper">
+    <div class="uni-input-placeholder input-placeholder" data-v-e27e67ca="">IFSC number</div>
+    <input maxlength="11" step="" enterkeyhint="done" autocomplete="off" type="" class="uni-input-input" />
+    <!---->
+    </div>
+    </uni-input>
+    </div>
+    </div>
+    </div>
+    </span>
+    </uni-form>
+    <div data-v-e27e67ca="" class="padding-bottom-lg" style="padding-top: 57px; border-radius: 0px 0px 7px 7px;"> <button data-v-e27e67ca="" class="cu-btn bg-Log block lg margin-lr-lg">Save</ button></div>
+    </div>
+    </div>
+    </div-body>
+    </div>
+    </div>
+ 
+
+<uni-tabbar class="uni-tabbar-bottom" id="BottomBar" style="display: none;">
+<div class="uni-tabbar" style="background-color: rgb(255, 255, 255); backdrop-filter: none;">
+<div class="uni-tabbar-border" style="background-color: rgba(0, 0, 0, 0.33);"></div>
+<div class="uni-tabbar__item">
+<!---->
+<div class="uni-tabbar__bd" style="height: 50px;" id="HomePageBtn">
+<div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/h1.png" /></div>
+<div class="uni-tabbar__label" style="color: rgb(44, 58, 105); font-size: 10px; line-height: normal; margin-top: 3px;">Home</div>
+<!---->
+</div>
+</div>
+<div class="uni-tabbar__item">
+<!---->
+<div class="uni-tabbar__bd" style="height: 50px;" id="ProductPageBtn">
+<div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/p.png" /></div>
+<div class="uni-tabbar__label" style="color: rgb(112, 112, 112); font-size: 10px; line-height: normal; margin-top: 3px;">Product</div>
+<!---->
+</div>
+</div>
+<div class="uni-tabbar__item">
+<!---->
+<div class="uni-tabbar__bd" style="height: 50px;" id="ProfilePageBtn">
+<div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/me.png" /></div>
+<div class="uni-tabbar__label" style="color: rgb(112, 112, 112); font-size: 10px; line-height: normal; margin-top: 3px;">My</div>
+<!---->
+</div>
+</div>
+</div>
+<div class="uni-placeholder" style="height: 50px;"></div>
+</uni-tabbar>
+<!---->
+<uni-actionsheet>
+<div class="uni-mask uni-actionsheet__mask" style="display: none;"></div>
+<div class="uni-actionsheet">
+<div class="uni-actionsheet__menu">
+<!----><!---->
+<div style="max-height: 260px; overflow: hidden;"><div style="transform: translateY(0px) translateZ(0px);"></div></div>
+</div>
+<div class="uni-actionsheet__action"><div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0);">Cancel</div></div>
+<div></div>
+</div>
+<!---->
+</uni-actionsheet>
+<uni-modal style="display: none;">
+<div class="uni-mask"></div>
+<div class="uni-modal">
+<!---->
+<div class="uni-modal__bd"></div>
+<div class="uni-modal__ft">
+<div class="uni-modal__btn uni-modal__btn_default" style="color: rgb(0, 0, 0);">Cancel</div>
+<div class="uni-modal__btn uni-modal__btn_primary" style="color: rgb(0, 122, 255);">OK</div>
+</div>
+</div>
+<!---->
+</uni-modal>
+<!----><!---->
+</uni-app>
+<div style="position: absolute; left: 0px; top: 0px; width: 0px; height: 0px; z-index: -1; overflow: hidden; visibility: hidden;">
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-top);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 400px; height: 400px;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-top);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 250%; height: 250%;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-left);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 400px; height: 400px;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-left);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 250%; height: 250%;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-right);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 400px; height: 400px;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-right);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 250%; height: 250%;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-bottom);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 400px; height: 400px;"></div>
+</div>
+<div style="position: absolute; width: 100px; height: 200px; box-sizing: border-box; overflow: hidden; padding-bottom: env(safe-area-inset-bottom);">
+<div style="transition: all 0s ease 0s; animation: auto ease 0s 1 normal none running none; width: 250%; height: 250%;"></div>
+</div>
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
