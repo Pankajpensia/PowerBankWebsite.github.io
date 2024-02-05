@@ -211,7 +211,8 @@ LoginBtn.addEventListener("click", async function (e) {
 	console.log("Success! Welcome back!");
 	alert("Login Successfully ! Welcome back!");
 	localStorage.setItem("UserMobile", mobileNumber.replace("@gmail.com", ""))
-	
+	AdminLoginPage.style.display = "none";
+	AdminHomePage.style.display = "block"
 	} catch (error) {
 	console.log(error);
 
