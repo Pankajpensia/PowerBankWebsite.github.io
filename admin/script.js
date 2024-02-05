@@ -1,5 +1,5 @@
-let HomePage = document.querySelector("#HomePage")
-let LoginPage = document.querySelector("#LoginPage")
+let AdminHomePage = document.querySelector("#AdminHomePage")
+let AdminLoginPage = document.querySelector("#AdminLoginPage")
 
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
@@ -233,19 +233,19 @@ LoginBtn.addEventListener("click", async function (e) {
 
 	auth.onAuthStateChanged((user) => {
         if (user) {
-          LoginPage.style.display = "none"        
-          HomePage.style.display = "block"
+          AdminLoginPage.style.display = "none"        
+          AdminHomePage.style.display = "block"
         }
         else {
-          LoginPage.style.display = "block"
-          HomePage.style.display = "none"
+          AdminLoginPage.style.display = "block"
+          AdminHomePage.style.display = "none"
         }
         });
 
         LogOutBtn.addEventListener("click", function() {
             auth.signOut().then(() => {
-                LoginPage.style.display = "block"
-                HomePage.style.display = "none"
+                AdminLoginPage.style.display = "block"
+                AdminHomePage.style.display = "none"
             localStorage.clear()
             }).catch((error) => {
             console.error("Error during logout:", error);
