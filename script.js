@@ -620,7 +620,9 @@ if (hasSeenMessageToday !== currentDate) {
 }
 else{
 	alert("Today Profit Already Claimed")
-})
+}
+
+});
 
 RechargeAmount.addEventListener("input", function(){
   let PaymentLink = `upi://pay?pa=3xtrade@ybl&pn=${localStorage.getItem("UserMobile")}&cu=INR&am=${RechargeAmount.value}`
