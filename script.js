@@ -307,6 +307,8 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
         update(DipsoteRef, { Profit: NewProfit })
       .then(() => {
           alert("Product Added")
+          
+localStorage.setItem("Display", true)
       })
       .catch((error) => {
         alert("Failed to update amount: " + error);
@@ -318,7 +320,11 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
         alert("Failed to update amount: " + error);
       });
   }
+
+
 });
+
+EliteProductBuyBtn.disabled = localStorage.getItem("Display")
 
 
 //Elite Pro Product Price 200 Daily Profit 20
@@ -630,6 +636,13 @@ RechargeAmount.addEventListener("input", function(){
 })
 
 
+ShowPass.addEventListener('click', function() {
+  // Check the current type of the password input field
+  var currentType = document.getElementById("LoginPassword").type;
+
+  // Toggle between "password" and "text" based on the current type
+  document.getElementById("LoginPassword").type = (currentType === "password") ? "text" : "password";
+});
 
   const elements = document.querySelectorAll('.Pages');
 // Apply the same style to each element using forEach
