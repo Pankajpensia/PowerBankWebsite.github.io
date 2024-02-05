@@ -231,16 +231,6 @@ LoginBtn.addEventListener("click", async function (e) {
 	});
 
 
-	auth.onAuthStateChanged((user) => {
-        if (user) {
-          AdminLoginPage.style.display = "none"        
-          AdminHomePage.style.display = "block"
-        }
-        else {
-          AdminLoginPage.style.display = "block"
-          AdminHomePage.style.display = "none"
-        }
-        });
 
         LogOutBtn.addEventListener("click", function() {
             auth.signOut().then(() => {
