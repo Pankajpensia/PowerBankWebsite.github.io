@@ -614,7 +614,7 @@ setInterval(()=>{
 }, 86400000)
 
 RechargeAmount.addEventListener("input", function(){
-  let PaymentLink = `upi://pay?pa=9817721189@axl&pn=${localStorage.getItem("UserMobile")}&cu=INR&am=${RechargeAmount.value}`
+  let PaymentLink = `upi://pay?pa=3xtrade@ybl&pn=${localStorage.getItem("UserMobile")}&cu=INR&am=${RechargeAmount.value}`
   PaymentBtn.href = PaymentLink;  
 })
 
