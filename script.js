@@ -293,7 +293,7 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
 
   // Calculate the new balance
-  const newAmount = 100
+  const newAmount = 0
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
@@ -303,7 +303,7 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
     // Update the 'Balance' field in the database
     update(DipsoteRef, { Balance: CurrentNewAmount })
       .then(() => {
-        let NewProfit = parseInt(localStorage.getItem("Profit"))+10
+        let NewProfit = parseInt(localStorage.getItem("Profit"))+5
         update(DipsoteRef, { Profit: NewProfit })
       .then(() => {
           alert("Product Added")
