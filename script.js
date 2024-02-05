@@ -591,7 +591,17 @@ PremiumProProductBuyBtn.addEventListener("click", function (e) {
 let DailyCheckIn = document.querySelector("#DailyCheckIn");
 
 DailyCheckIn.addEventListener("click", function(){
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+  // Check if the user has seen the message today
+const hasSeenMessageToday = localStorage.getItem('hasSeenMessageToday');
+
+// Get the current date
+const currentDate = new Date().toLocaleDateString();
+
+// If the user hasn't seen the message today, show it and update the local storage
+if (hasSeenMessageToday !== currentDate) {
+  alert("Today Profit Claimed");
+  localStorage.setItem('hasSeenMessageToday', currentDate)
+	const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -607,11 +617,10 @@ DailyCheckIn.addEventListener("click", function(){
   .catch(()=>{
     alert("Network Issue")
   })
+}
+else{
+	alert("Today Profit Already Claimed")
 })
-
-setInterval(()=>{
- 
-}, 86400000)
 
 RechargeAmount.addEventListener("input", function(){
   let PaymentLink = `upi://pay?pa=3xtrade@ybl&pn=${localStorage.getItem("UserMobile")}&cu=INR&am=${RechargeAmount.value}`
