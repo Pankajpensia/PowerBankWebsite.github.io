@@ -662,11 +662,6 @@ WithdrawalPageBtn.addEventListener('click', function(){
     WithdrawalPage.style.display = "block"
 })
 
-BankPageBtn.addEventListener('click', function(){
-    hidePages();
-
-    BankPage.style.display = "block"
-})
 
 LoginPageBtn.addEventListener('click', function(){
     hidePages();
