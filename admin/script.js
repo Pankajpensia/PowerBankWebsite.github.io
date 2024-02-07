@@ -233,11 +233,11 @@ LoginBtn.addEventListener("click", async function (e) {
 
    auth.onAuthStateChanged((user) => {
         if (user) {
-          AdminHomePage.style.display = "none";
+          AdminLoginPage.style.display = "none";
           AdminHomePage.style.display = "block";
             }
         else {
-            AdminHomePage.style.display = "block";
+            AdminLoginPage.style.display = "block";
             AdminHomePage.style.display = "none";
         }
         });
