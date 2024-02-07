@@ -127,7 +127,7 @@ RegisterBtn.addEventListener('click', async function(){
     Bank: null,
     }).then(() => {
     alert("Account Registred");
-    	  HomePage.style.display = "none;
+    	  HomePage.style.display = "none"
 	  LoginPage.style.display = "block"
 
     }).catch((error) => {
@@ -310,8 +310,7 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
         update(DipsoteRef, { Profit: NewProfit })
       .then(() => {
           alert("Product Added")
-          
-localStorage.setItem("Display", true)
+          localStorage.setItem("FreeProduct")
       })
       .catch((error) => {
         alert("Failed to update amount: " + error);
