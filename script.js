@@ -160,7 +160,7 @@ LoginBtn.addEventListener("click", async function (e) {
 	console.log("Success! Welcome back!");
 	alert("Login Successfully ! Welcome back!");
 	localStorage.setItem("UserMobile", mobileNumber.replace("@gmail.com", ""))
-	
+	location.reload();
 	} catch (error) {
 	console.log(error);
 
@@ -179,13 +179,13 @@ LoginBtn.addEventListener("click", async function (e) {
 	}
 	});
 
- NavUserName.innerHTML = localStorage.getItem("UserMobile")
+ NavUserName.innerHTML = localStorage.getItem("NavUserName")
 
 	auth.onAuthStateChanged((user) => {
     if (user) {
       LoginPage.style.display = "none"
       RegisterPage.style.display = "none"
-    
+      
       HomePage.style.display = "block"
       BottomBar.style.display = "block"
     }
