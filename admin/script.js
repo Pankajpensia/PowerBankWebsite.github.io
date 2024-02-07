@@ -231,6 +231,16 @@ LoginBtn.addEventListener("click", async function (e) {
 	}
 	});
 
+   auth.onAuthStateChanged((user) => {
+        if (user) {
+          AdminHomePage.style.display = "none";
+          AdminHomePage.style.display = "block";
+            }
+        else {
+            AdminHomePage.style.display = "block";
+            AdminHomePage.style.display = "none";
+        }
+        });
 
 
         LogOutBtn.addEventListener("click", function() {
