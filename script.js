@@ -127,10 +127,13 @@ RegisterBtn.addEventListener('click', async function(){
     Bank: null,
     }).then(() => {
     alert("Account Registred");
-    location.reload();
+    	  HomePage.style.display = "none;
+	  LoginPage.style.display = "block"
+
     }).catch((error) => {
     alert("User Not Added. Error: " + error);
     });
+
 
   } catch (error) {
     console.log(error)
@@ -198,13 +201,13 @@ LoginBtn.addEventListener("click", async function (e) {
       snapshot.forEach((childSnapshot) => {
         // Get the key of the child data
         const childKey = childSnapshot.key;
-    
+        
         // Extract data from the child snapshot
         const childData = childSnapshot.val();
     
         // Get the 'Balance' value from the data
         const NewBalance = childData.Balance;
-
+        let Name = childData.Name;
         let Profit = childData.Profit;
     
         // Update the 'Balance' element with the retrieved value
@@ -212,7 +215,7 @@ LoginBtn.addEventListener("click", async function (e) {
          localStorage.setItem("Profit", Profit)
          localStorage.setItem("DataKey", childKey)
          localStorage.setItem("CurrentBalance", NewBalance)
-    
+         localStorage.setItem("NavUserName", Name)
       });
     })
 
@@ -297,7 +300,7 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+    alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -342,7 +345,7 @@ EliteProProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+ alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -380,7 +383,7 @@ SilverProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+ alert("Insufficient balance")
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -418,7 +421,7 @@ SilverProProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -456,7 +459,7 @@ GoldProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -494,7 +497,7 @@ DiamondProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -532,7 +535,7 @@ PremiumProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
@@ -570,7 +573,7 @@ PremiumProProductBuyBtn.addEventListener("click", function (e) {
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
-    alert("Invalid balance! The new balance cannot be negative.");
+alert("Insufficient balance");
   } else {
   let CurrentNewAmount = parseInt(localStorage.getItem("CurrentBalance"))-parseInt(newAmount)
     // Update the 'Balance' field in the database
