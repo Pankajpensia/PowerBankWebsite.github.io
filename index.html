@@ -92,12 +92,27 @@ style="
             <!-- <uni-text   class="iconfont icon-mima1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
             <uni-input   class="log-input">
             <div class="uni-input-wrapper">
-            <input maxlength="140" step="" placeholder="Reffer Code" enterkeyhint="done" autocomplete="off" id="RefferCode" type="password" class="uni-input-input" />
+            <input maxlength="140" step="" placeholder="Reffer Code" enterkeyhint="done" autocomplete="off" id="RefferCode" type="tel" class="uni-input-input" />
             <!---->
+           
             </div>
             </uni-input>
+            <button class="btn btn-primary" id="VerifyCode" style="background-color: green; color: white; border: none; outline:none; border-radius: 5px;">Verify Code</button>
             <div  ></div>
+        </div>
+        <div   class="bginp padding-lr-sm flex align-center margin-top-sm" style="height: 44px;">
+            <!-- <uni-text   class="iconfont icon-mima1 margin-right-sm" style="font-size: 150%;"><span></span></uni-text> -->
+            <uni-input   class="log-input">
+            <div class="uni-input-wrapper">
+            <input maxlength="140" step="" readonly placeholder="Verified Refferal Name" enterkeyhint="done" autocomplete="off" id="VerifyReffer" type="text" class="uni-input-input" />
+            <!---->
+           
             </div>
+            </uni-input>
+            <!-- <button class="btn btn-primary" id="VerifyCode" style="background-color: green; color: white; border: none; outline:none; border-radius: 5px;">Verify Code</button> -->
+            <div  ></div>
+        </div>
+        <span style="margin-top: 5px; color: red;" id="RefferalName"></span>
 
         </div>
         <div   style="margin: 55px 33px 22px;"> <button id="RegisterBtn"   class="cu-btn block lg bg-Log round">Register</ button></div>
@@ -262,7 +277,7 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
     </div>
     <div   class="margin-left flex flex-direction justify-between">
     <div  >
-    <uni-text   class="text-price text-red text-xl"><span>0</span></uni-text><uni-text   class="source_price margin-left-sm"></uni-text>
+    <uni-text   class="text-price text-red text-xl"><span>10</span></uni-text><uni-text   class="source_price margin-left-sm"></uni-text>
     </div>
     <div   class="flex">
     <div   style="width: 89px;"><div   class="text-cycle">100</div><div   class="margin-top-sm text-sm">Cycle</div></div>
@@ -641,22 +656,22 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
     </div>
     </div>
     <uni-view data-v-967f93c4="" class="cu-list grid col-3 border" style="margin-top: 10px; border-radius: 7px;">
-        <uni-view data-v-967f93c4="" class="cu-item bg-undefined">
+        <uni-view data-v-967f93c4="" class="cu-item bg-undefined" id="RecordPageBtn">
         <uni-view data-v-967f93c4="" class="padding-top">
             <img src="Record.png" alt=""><uni-view data-v-967f93c4="" class="margin-top text-shadow" style="line-height: 2; opacity: 0.8;">Record</uni-view>
         </uni-view>
         </uni-view>
-        <uni-view data-v-967f93c4="" class="cu-item bg-undefined">
+        <uni-view data-v-967f93c4="" class="cu-item bg-undefined" id="TeamPageBtn">
         <uni-view data-v-967f93c4="" class="padding-top">
        <img src="Team.png" alt=""><uni-view data-v-967f93c4="" class="margin-top text-shadow" style="line-height: 2; opacity: 0.8;">My team</uni-view>
         </uni-view>
         </uni-view>
-        <uni-view data-v-967f93c4="" class="cu-item bg-undefined">
+        <uni-view data-v-967f93c4="" class="cu-item bg-undefined" id="SharePageBtn">
         <uni-view data-v-967f93c4="" class="padding-top">
        <img src="share.png" alt=""><uni-view data-v-967f93c4="" class="margin-top text-shadow" style="line-height: 2; opacity: 0.8;">Share</uni-view>
         </uni-view>
         </uni-view>
-        <uni-view data-v-967f93c4="" class="cu-item bg-">
+        <uni-view data-v-967f93c4="" class="cu-item bg-undefined" id="ProfitPageBtn">
         <uni-view data-v-967f93c4="" class="padding-top">
         <img src="Profit.png" alt="">
         <uni-view data-v-967f93c4="" class="margin-top text-shadow" style="line-height: 2; opacity: 0.8;">Profit</uni-view>
@@ -794,14 +809,16 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
         <div  class="bginp padding-lr-sm flex align-center">
             <uni-input   class="log-input">
             <div class="uni-input-wrapper">
-            <input maxlength="10" id="PaymentMethodName" placeholder="Phonepe, Paytm" step="0.000000000000000001" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input" />
-            <!---->
-            </div>
+            <select name="method" id="PaymentMethod">
+                <option value="PhonePe">PhonePe</option>
+                <option value="Paytm">Paytm</option>
+                <option value="GooglePay">GooglePay</option>
+            </select>
             </uni-input>
             </div>
         </div>
         <div  class="cu-form-group margin-top ys radius">
-            <div  class="title text-red" style="font-size: 100%;">Payment UserName</div>
+            <div  class="title text-red" style="font-size: 100%;">UserName</div>
             <div  class="bginp padding-lr-sm flex align-center">
                 <uni-input   class="log-input">
                 <div class="uni-input-wrapper">
@@ -812,7 +829,7 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
                 </div>
             </div>
         <div  class="cu-form-group margin-top ys radius">
-            <div  class="title text-red" style="font-size: 100%;">Payment UPI/Number</div>
+            <div  class="title text-red" style="font-size: 100%;">Payment</div>
             <div  class="bginp padding-lr-sm flex align-center">
                 <uni-input   class="log-input">
                 <div class="uni-input-wrapper">
@@ -952,7 +969,7 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
     <div-head div-head-type="default">
     <div class="div-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
     <div class="div-head-hd">
-    <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+    <div class="div-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
     <div class="div-head-ft"></div>
     </div>
     <div class="div-head-bd">
@@ -1034,12 +1051,12 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
  
 <!--
     =====================================================================
-    ============================== Withdrawal Record Page ============================
+    ============================= Record Page ============================
     =====================================================================
 -->
 
 
-<div id="WithdrawalRecordPage" style="display: none;">
+<div id="RecordPage" class="Pages" style="display: none;">
     <uni-app class="uni-app--maxwidth">
         <uni-page data-page="pages/record/record">
         <uni-page-head uni-page-head-type="default">
@@ -1051,7 +1068,7 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
         <div class="uni-page-head-bd">
         <div class="uni-page-head__title" style="font-size: 14px; opacity: 1;">
         <!---->
-        Withdrawal record
+         Record
         </div>
         </div>
         <!---->
@@ -1124,7 +1141,226 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
         
 </div>
 
-<uni-tabbar class="uni-tabbar-bottom" id="BottomBar" style="display: none;">
+
+<!--
+    =====================================================================
+    ============================= Team Page ============================
+    =====================================================================
+-->
+
+
+<div id="TeamPage" class="Pages" style="display: none;">
+    <uni-app class="uni-app--maxwidth">
+        <uni-page data-page="pages/team/team">
+        <uni-page-head uni-page-head-type="default">
+        <div class="uni-page-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+        <div class="uni-page-head-hd">
+        <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-page-head-bd">
+        <div class="uni-page-head__title" style="font-size: 14px; opacity: 1;">
+        <!---->
+         Team
+        </div>
+        </div>
+        <!---->
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-placeholder"></div>
+        </uni-page-head>
+        <!---->
+        <uni-page-wrapper>
+        <uni-page-body><uni-view data-v-557df5ce="" id="RefferTeamBox">
+
+           
+        </uni-view>
+        
+        </uni-page-body>
+        </uni-page-wrapper>
+        </uni-page>
+        <uni-tabbar class="uni-tabbar-bottom" style="display: none;">
+        <div class="uni-tabbar" style="background-color: rgb(255, 255, 255); backdrop-filter: none;">
+        <div class="uni-tabbar-border" style="background-color: rgba(0, 0, 0, 0.33);"></div>
+        <div class="uni-tabbar__item">
+        <!---->
+        <div class="uni-tabbar__bd" style="height: 50px;">
+        <div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/h.png" /></div>
+        <div class="uni-tabbar__label" style="color: rgb(112, 112, 112); font-size: 10px; line-height: normal; margin-top: 3px;">Home</div>
+        <!---->
+        </div>
+        </div>
+        <div class="uni-tabbar__item">
+        <!---->
+        <div class="uni-tabbar__bd" style="height: 50px;">
+        <div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/p.png" /></div>
+        <div class="uni-tabbar__label" style="color: rgb(112, 112, 112); font-size: 10px; line-height: normal; margin-top: 3px;">Product</div>
+        <!---->
+        </div>
+        </div>
+        <div class="uni-tabbar__item">
+        <!---->
+        <div class="uni-tabbar__bd" style="height: 50px;">
+        <div class="uni-tabbar__icon" style="width: 24px; height: 24px;"><img src="/static/img/me1.png" /></div>
+        <div class="uni-tabbar__label" style="color: rgb(44, 58, 105); font-size: 10px; line-height: normal; margin-top: 3px;">My</div>
+        <!---->
+        </div>
+        </div>
+        </div>
+        <div class="uni-placeholder" style="height: 50px;"></div>
+        </uni-tabbar>
+        <!---->
+        <uni-actionsheet>
+        <div class="uni-mask uni-actionsheet__mask" style="display: none;"></div>
+        <div class="uni-actionsheet">
+        <div class="uni-actionsheet__menu">
+        <!----><!---->
+        <div style="max-height: 260px; overflow: hidden;"><div style="transform: translateY(0px) translateZ(0px);"></div></div>
+        </div>
+        <div class="uni-actionsheet__action"><div class="uni-actionsheet__cell" style="color: rgb(0, 0, 0);">Cancel</div></div>
+        <div></div>
+        </div>
+        <!---->
+        </uni-actionsheet>
+        <uni-modal style="display: none;">
+        <div class="uni-mask"></div>
+        <div class="uni-modal">
+        <!---->
+        <div class="uni-modal__bd"></div>
+        <div class="uni-modal__ft">
+        <div class="uni-modal__btn uni-modal__btn_default" style="color: rgb(0, 0, 0);">Cancel</div>
+        <div class="uni-modal__btn uni-modal__btn_primary" style="color: rgb(0, 122, 255);">OK</div>
+        </div>
+        </div>
+        <!---->
+        </uni-modal>
+        <!----><!---->
+        </uni-app>
+        
+</div>
+
+
+<!--
+    =====================================================================
+    ============================= Share Page ============================
+    =====================================================================
+-->
+
+<div id="SharePage" class="Pages" style="display: none;">
+    <uni-page data-page="pages/share/share">
+        <uni-page-head uni-page-head-type="default">
+        <div class="uni-page-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+        <div class="uni-page-head-hd">
+        <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-page-head-bd">
+        <div class="uni-page-head__title" style="font-size: 14px; opacity: 1;">
+        <!---->
+        Share
+        </div>
+        </div>
+        <!---->
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-placeholder"></div>
+        </uni-page-head>
+        <!---->
+        <uni-page-wrapper>
+        <uni-page-body>
+        <uni-view data-v-70fc9d70="">
+        <uni-view data-v-70fc9d70="" style="background-size: 100% 100%; background-position: center center; width: 350px; background-image: url('https://www.biboapp.net/pics/team.png');">
+        <uni-view data-v-70fc9d70="" class="padding-lr-xl padding-tb margin bg-share">
+        <uni-view data-v-70fc9d70="" class="padding-tb text-lg text-black text-bold" style="border-bottom: 1px dashed rgb(0, 0, 0);">Referrer link</uni-view>
+        <uni-view data-v-70fc9d70="" class="padding-top" style="border-radius: 7px 7px 0px 0px;">
+        <uni-text data-v-70fc9d70="" class="margin-right-sm"><span>Referral code:</span></uni-text><uni-text data-v-70fc9d70="" code="415437" class="text-xxl"><span>415437</span></uni-text>
+        </uni-view>
+        <uni-view data-v-70fc9d70="">
+        <uni-view data-v-70fc9d70="" text="https://www.biboapp.net/#/pages/register/register?id=415437" class="margin-top-xl bg-link" style="overflow-wrap: break-word; line-height: 1.4;">
+        https://www.biboapp.net/#/pages/register/register?id=415437
+        </uni-view>
+        <uni-view data-v-70fc9d70="" class="flex justify-center" style="padding: 50px 30px 30px; border-radius: 0px 0px 7px 7px;">
+        <uni-button data-v-70fc9d70="" class="cu-btn round bg-Log block lg" style="width: 275px;">
+        <uni-text data-v-70fc9d70=""><span>Copy</span></uni-text>
+        </uni-button>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-page-body>
+        </uni-page-wrapper>
+        </uni-page>
+        
+</div>
+
+
+<!--
+    =====================================================================
+    ============================= Profit Page ============================
+    =====================================================================
+-->
+
+<div id="ProfitPage" class="Pages" style="display: none;">
+    <uni-page data-page="pages/Profits/Profits">
+        <uni-page-head uni-page-head-type="default">
+        <div class="uni-page-head" style="background-color: rgb(44, 58, 105); color: rgb(255, 255, 255);">
+        <div class="uni-page-head-hd">
+        <div class="uni-page-head-btn"><i class="uni-btn-icon" style="color: rgb(255, 255, 255); font-size: 27px;"></i></div>
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-page-head-bd">
+        <div class="uni-page-head__title" style="font-size: 14px; opacity: 1;">
+        <!---->
+        Profit
+        </div>
+        </div>
+        <!---->
+        <div class="uni-page-head-ft"></div>
+        </div>
+        <div class="uni-placeholder"></div>
+        </uni-page-head>
+        <!---->
+        <uni-page-wrapper>
+        <uni-page-body>
+        <uni-view data-v-0406b02c="">
+        <uni-view data-v-700823a7="" data-v-0406b02c="" id="uIuUGp54cdWOdTFj025kMRBhmtTOFpQU" class="u-sticky" style="background-color: rgb(241, 241, 241); position: sticky; z-index: 970; top: 44px;">
+        <uni-view data-v-700823a7="" class="u-sticky__content" style=""></uni-view>
+        </uni-view>
+        <uni-view data-v-0406b02c="" class="bg-white margin-left-lg margin-top-xs text-black" style="border-bottom: 1px solid rgb(243, 243, 243);">
+        <uni-view data-v-0406b02c="" class="padding-tb-xs flex justify-between align-center">
+        <uni-view data-v-0406b02c="" class="flex"><uni-view data-v-0406b02c=""></uni-view><uni-view data-v-0406b02c="" class="text-cut">daily check-in</uni-view></uni-view><uni-view data-v-0406b02c="" class="cuIcon-title text-white"></uni-view>
+        </uni-view>
+        <uni-view data-v-0406b02c="" class="padding-tb-xs padding-right-lg flex justify-between">
+        <uni-view data-v-0406b02c="" class="flex align-center text-sm"><uni-view data-v-0406b02c="">2024-02-03 21:21:31</uni-view></uni-view>
+        <uni-view data-v-0406b02c="" class="flex align-center">
+        <uni-view data-v-0406b02c="" class="text-black">
+        <uni-text data-v-0406b02c="" class="text-price"><span>10.00</span></uni-text>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        <uni-view data-v-0406b02c="" class="bg-white margin-left-lg margin-top-xs text-black" style="border-bottom: 1px solid rgb(243, 243, 243);">
+        <uni-view data-v-0406b02c="" class="padding-tb-xs flex justify-between align-center">
+        <uni-view data-v-0406b02c="" class="flex"><uni-view data-v-0406b02c=""></uni-view><uni-view data-v-0406b02c="" class="text-cut">daily check-in</uni-view></uni-view><uni-view data-v-0406b02c="" class="cuIcon-title text-white"></uni-view>
+        </uni-view>
+        <uni-view data-v-0406b02c="" class="padding-tb-xs padding-right-lg flex justify-between">
+        <uni-view data-v-0406b02c="" class="flex align-center text-sm"><uni-view data-v-0406b02c="">2024-02-02 19:23:06</uni-view></uni-view>
+        <uni-view data-v-0406b02c="" class="flex align-center">
+        <uni-view data-v-0406b02c="" class="text-black">
+        <uni-text data-v-0406b02c="" class="text-price"><span>10.00</span></uni-text>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-view>
+        </uni-page-body>
+        </uni-page-wrapper>
+        </uni-page>
+        
+</div>
+
+<uni-tabbar class="uni-tabbar-bottom" id="BottomBar" style="display: block;">
 <div class="uni-tabbar" style="background-color: rgb(255, 255, 255); backdrop-filter: none;">
 <div class="uni-tabbar-border" style="background-color: rgba(0, 0, 0, 0.33);"></div>
 <div class="uni-tabbar__item">
@@ -1212,4 +1448,3 @@ IndiaSolar's is one of India's largest renewable energy companies. It is an impo
 
 </body>
 </html>
-
