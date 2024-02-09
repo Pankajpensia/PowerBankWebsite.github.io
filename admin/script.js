@@ -59,7 +59,7 @@ UserTableForm.addEventListener('click', function (event) {
         const dataMobile = event.target.getAttribute('data-mobile');
         const dataBalance = event.target.getAttribute('data-old');
         ModifyAmount.value = dataBalance;
-        const recordKey = `${dataMobile}/${dataKey}`;
+        const recordKey = `${dataMobile}/Personal/${dataKey}`;
 
         // Save button click event listener
         document.getElementById('SaveChangesBtn').addEventListener('click', function () {
@@ -76,7 +76,7 @@ onValue(ref(database, "Data/OwnerListUser/User"), (snapshot) => {
     snapshot.forEach((childSnapshot) => {
         let childData = childSnapshot.val();
 
-        onValue(ref(database, `Data/User/${childData.Mobile}`), (userDataSnapshot) => {
+        onValue(ref(database, `Data/User/${childData.Mobile}/Personal`), (userDataSnapshot) => {
             userDataSnapshot.forEach((userDataSnapshot) => {
                 let UserData = userDataSnapshot.val();
                 if (UserData) {
@@ -95,7 +95,7 @@ onValue(ref(database, "Data/OwnerListUser/User"), (snapshot) => {
 const DipositeTable = document.getElementById("DipositeTable");
 
 // Function to render deposit table row
-function renderDepositTableRow(name, mobile, amount, date, time, method, upi, key) {
+function renderDepositTableRow(name, mobile, amount, date, time, method, key, UserKey) {
     return `
         <tr>
             <td>${name}</td>
@@ -104,33 +104,73 @@ function renderDepositTableRow(name, mobile, amount, date, time, method, upi, ke
             <td>${date}</td>
             <td>${time}</td>
             <td>${method}</td>
-            <td>${upi}</td>
-            <td>
-                <button class="btn btn-primary delBtn" data-key="${key}">Delete</button>
+             <td>
+                 <button class="btn btn-success AcceptBtn" data-mobile="${mobile}"  data-key="${key}" data-key-user="${UserKey}">Accept</button>
+                <button class="btn btn-danger delBtn" data-mobile="${mobile}" data-key-user="${UserKey}" data-key="${key}">Reject</button>
             </td>
         </tr>
     `;
 }
 
 // Event delegation for delete buttons
-DipositeTable.addEventListener('click', (event) => {
+DipositeTable.addEventListener('click', async (event) => {
     if (event.target.classList.contains('delBtn')) {
         const documentIdToDelete = event.target.getAttribute("data-key");
-        if (documentIdToDelete) {
-            const documentRefToDelete = ref(database, `Data/OwnerListUser/Diposite/${documentIdToDelete}`);
-            DipositeDelete(documentRefToDelete);
+        const EditStatusMobile = event.target.getAttribute("data-mobile");
+        const EditStatusKey = event.target.getAttribute("data-key-user");
+        if (documentIdToDelete && EditStatusMobile && EditStatusKey) {
+            try {
+                const documentRefToDelete = ref(database, `Data/OwnerListUser/Diposite/${documentIdToDelete}`);
+                const EditRecord = ref(database, `Data/User/${EditStatusMobile}/Record/${EditStatusKey}`);
+                
+                // Update record status to "Complete"
+                await update(EditRecord, { Status: "Reject" });
+                
+                // Delete document from OwnerListUser
+                await DipositeDelete(documentRefToDelete);
+                
+                alert("Order Rejected");
+            } catch (error) {
+                console.error("Error deleting document:", error);
+                alert("An error occurred while deleting the document.");
+            }
+        } else {
+            alert("Missing required attributes for deletion.");
+        }
+    }
+
+    if (event.target.classList.contains('AcceptBtn')) {
+        const documentIdToDelete = event.target.getAttribute("data-key");
+        const EditStatusMobile = event.target.getAttribute("data-mobile");
+        const EditStatusKey = event.target.getAttribute("data-key-user");
+        if (documentIdToDelete && EditStatusMobile && EditStatusKey) {
+            try {
+                const documentRefToDelete = ref(database, `Data/OwnerListUser/Diposite/${documentIdToDelete}`);
+                const EditRecord = ref(database, `Data/User/${EditStatusMobile}/Record/${EditStatusKey}`);
+                
+                // Update record status to "Complete"
+                await update(EditRecord, { Status: "Complate" });
+                
+                // Delete document from OwnerListUser
+                await DipositeDelete(documentRefToDelete);
+                
+                alert("Order Complate");
+            } catch (error) {
+                console.error("Error deleting document:", error);
+                alert("An error occurred while deleting the document.");
+            }
+        } else {
+            alert("Missing required attributes for deletion.");
         }
     }
 });
 
-// Function to delete user from owner
+// Function to delete document from OwnerListUser
 async function DipositeDelete(docRef) {
     try {
-        await remove(docRef);
-        alert("Successfully deleted!");
+      await remove(docRef)
     } catch (error) {
-        console.error(error);
-        console.log(error);
+        throw error;
     }
 }
 
@@ -138,10 +178,10 @@ async function DipositeDelete(docRef) {
 onValue(ref(database, "Data/OwnerListUser/Diposite"), (snapshot) => {
     snapshot.forEach((childSnapshot) => {
         let childDate = childSnapshot.val();
-        let { Name, GameUser, Method, Date, Time, UPI, Amount } = childDate;
+        let { Name, GameUser, Method, Date, Time, Amount, UserKey } = childDate;
         let key = childSnapshot.key;
 
-        let DepositTableRow = renderDepositTableRow(Name, GameUser, Amount, Date, Time, Method, UPI, key);
+        let DepositTableRow = renderDepositTableRow(Name, GameUser, Amount, Date, Time, Method, key, UserKey);
         DipositeTable.innerHTML += DepositTableRow;
     });
 });
@@ -151,27 +191,71 @@ onValue(ref(database, "Data/OwnerListUser/Diposite"), (snapshot) => {
 const WithdrawalTable = document.getElementById("WithdrawalTable");
 
 // Function to render deposit table row
-function renderWithdrawalTableRow(name, mobile, amount, upi, key) {
+function renderWithdrawalTableRow(GameUser, amount, UPI, key, UserKey) {
     return `
         <tr>
-            <td>${name}</td>
-            <td>${mobile}</td>
+            <td>${GameUser}</td>
+            <td>${amount}</td>
             <td><b>${amount}</b></td>
-            <td>${upi}</td>
+            <td>${UPI}</td>
             <td>
-                <button class="btn btn-primary delBtn" data-key="${key}">Delete</button>
+            <button class="btn btn-success AccecptWithdrawal" data-mobile="${GameUser}"  data-key="${key}" data-key-user="${UserKey}">Accept</button>
+            <button class="btn btn-danger DeleteWithdrawal" data-mobile="${GameUser}" data-key-user="${UserKey}" data-key="${key}">Reject</button>
+        
             </td>
         </tr>
     `;
 }
 
 // Event delegation for delete buttons
-WithdrawalTable.addEventListener('click', (event) => {
-    if (event.target.classList.contains('delBtn')) {
+WithdrawalTable.addEventListener('click', async (event) => {
+        if (event.target.classList.contains('DeleteWithdrawal')) {
         const documentIdToDelete = event.target.getAttribute("data-key");
-        if (documentIdToDelete) {
-            const documentRefToDelete = ref(database, `Data/OwnerListUser/Withdrawal/${documentIdToDelete}`);
-            WithdrawalDelete(documentRefToDelete);
+        const EditStatusMobile = event.target.getAttribute("data-mobile");
+        const EditStatusKey = event.target.getAttribute("data-key-user");
+        if (documentIdToDelete && EditStatusMobile && EditStatusKey) {
+            try {
+                const documentRefToDelete = ref(database, `Data/OwnerListUser/Withdrawal/${documentIdToDelete}`);
+                const EditRecord = ref(database, `Data/User/${EditStatusMobile}/Record/${EditStatusKey}`);
+                
+                // Update record status to "Complete"
+                await update(EditRecord, { Status: "Reject" });
+                
+                // Delete document from OwnerListUser
+                await DipositeDelete(documentRefToDelete);
+                
+                alert("Order Rejected");
+            } catch (error) {
+                console.error("Error deleting document:", error);
+                alert("An error occurred while deleting the document.");
+            }
+        } else {
+            alert("Missing required attributes for deletion.");
+        }
+    }
+
+    if (event.target.classList.contains('AccecptWithdrawal')) {
+        const documentIdToDelete = event.target.getAttribute("data-key");
+        const EditStatusMobile = event.target.getAttribute("data-mobile");
+        const EditStatusKey = event.target.getAttribute("data-key-user");
+        if (documentIdToDelete && EditStatusMobile && EditStatusKey) {
+            try {
+                const documentRefToDelete = ref(database, `Data/OwnerListUser/Withdrawal/${documentIdToDelete}`);
+                const EditRecord = ref(database, `Data/User/${EditStatusMobile}/Record/${EditStatusKey}`);
+                
+                // Update record status to "Complete"
+                await update(EditRecord, { Status: "Complate" });
+                
+                // Delete document from OwnerListUser
+                await WithdrawalDelete(documentRefToDelete);
+                
+                alert("Order Complate");
+            } catch (error) {
+                console.error("Error deleting document:", error);
+                alert("An error occurred while deleting the document.");
+            }
+        } else {
+            alert("Missing required attributes for deletion.");
         }
     }
 });
@@ -191,12 +275,12 @@ async function WithdrawalDelete(docRef) {
 onValue(ref(database, "Data/OwnerListUser/Withdrawal"), (snapshot) => {
     snapshot.forEach((childSnapshot) => {
         let childDate = childSnapshot.val();
-        let { Name, GameUser, UPI, Amount } = childDate;
+        let {GameUser, UPI, Amount, UserKey} = childDate;
         let key = childSnapshot.key;
 
-        let DepositTableRow = renderWithdrawalTableRow(Name, GameUser, Amount,UPI, key);
+        let DepositTableRow = renderWithdrawalTableRow(GameUser, Amount,UPI, key, UserKey);
         WithdrawalTable.innerHTML += DepositTableRow;
-    });
+    }); 
 });
 
 
@@ -231,9 +315,10 @@ LoginBtn.addEventListener("click", async function (e) {
 	}
 	});
 
-   auth.onAuthStateChanged((user) => {
+
+    auth.onAuthStateChanged((user) => {
         if (user) {
-          AdminLoginPage.style.display = "none";
+            AdminLoginPage.style.display = "none";
           AdminHomePage.style.display = "block";
             }
         else {
@@ -241,17 +326,7 @@ LoginBtn.addEventListener("click", async function (e) {
             AdminHomePage.style.display = "none";
         }
         });
-
-
-        LogOutBtn.addEventListener("click", function() {
-            auth.signOut().then(() => {
-                AdminLoginPage.style.display = "block"
-                AdminHomePage.style.display = "none"
-            localStorage.clear()
-            }).catch((error) => {
-            console.error("Error during logout:", error);
-            });
-            })
+    
 
 let UserPage = document.querySelector("#UserPage");
 let DipositePage = document.querySelector("#DipositePage");
