@@ -15,6 +15,13 @@ let RegisterPage = document.querySelector("#RegisterPage");
 let LoginPage = document.querySelector("#LoginPage")
 let BottomBar = document.querySelector("#BottomBar")
 let OrderPage = document.querySelector("#OrderPage");
+let RecordPage = document.querySelector("#RecordPage");
+let TeamPage = document.querySelector("#TeamPage")
+let SharePage = document.querySelector("#SharePage")
+let ProfitPage = document.querySelector("#ProfitPage")
+let VerifyReffer = document.getElementById("VerifyReffer")
+let RefferTeamBox = document.getElementById("RefferTeamBox")
+
 // All Buttons
 
 let HomePageBtn = document.querySelector("#HomePageBtn")
@@ -28,7 +35,11 @@ let RegisterPageBtn = document.querySelector("#RegisterPageBtn")
 let LogOutBtn = document.querySelector("#LogOutBtn")
 let PaymentBtn = document.querySelector("#PaymentBtn")
 let OrderPageBtn = document.querySelector("#OrderPageBtn")
-
+let RecordPageBtn = document.querySelector("#RecordPageBtn");
+let TeamPageBtn = document.querySelector("#TeamPageBtn");
+let SharePageBtn = document.querySelector("#SharePageBtn");
+let ProfitPageBtn = document.querySelector("#ProfitPageBtn");
+let VerifyCode = document.querySelector("#VerifyCode")
 //Product Buy Buttons
 let EliteProductBuyBtn = document.querySelector("#EliteProductBuyBtn")
 let EliteProProductBuyBtn = document.querySelector("#EliteProProductBuyBtn")
@@ -74,6 +85,7 @@ ConfirmPassword.addEventListener('input', function(){
 const firebaseConfig = {
   apiKey: "AIzaSyAyMS818AjyeDTpqKHhsERIXZzAl4Y0bEQ",
   authDomain: "powerbank-3c876.firebaseapp.com",
+  databaseURL: "https://powerbank-3c876-default-rtdb.firebaseio.com",
   projectId: "powerbank-3c876",
   storageBucket: "powerbank-3c876.appspot.com",
   messagingSenderId: "680795917011",
@@ -85,10 +97,45 @@ const auth = getAuth(app);
 const database = getDatabase();
 
 let CurrentUserID;
+let RefferKey;
+RegisterBtn.disabled = true;
+
+VerifyCode.addEventListener('click', function(){
+  console.log('clicked..')
+  let RefferCode = document.getElementById("RefferCode").value  
+
+  onValue(ref(database, `Data/User/${RefferCode}/Personal`), (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      // Get the key of the child data
+      let DataKey = childSnapshot.key;
+      RefferKey = DataKey
+      // Extract data from the child snapshot
+      const childData = childSnapshot.val();
+      let Name = childData.Name;
+      
+      VerifyReffer.value = Name;
+      console.log(Name)
+      if(Name === "undefined"){
+        RegisterBtn.disabled = true;
+        VerifyReffer.value = "Refferal Not Found"
+      }
+      else{
+        RegisterBtn.disabled = false;
+        VerifyReffer.value = Name;
+      }
+      console.log("Reffer Name ", Name)
+    });
+
+    console.log(RefferCode)
+  })
+
+
+})
 
 RegisterBtn.addEventListener('click', async function(){
   let MobileNumber = document.getElementById("MobileNumber").value
   let Password = document.getElementById("Password").value  
+  let RefferCode = document.getElementById("RefferCode").value
 
   console.log("Mobile"+ MobileNumber+" "+"Password"+ Password)
 
@@ -97,25 +144,40 @@ RegisterBtn.addEventListener('click', async function(){
     const OwnerListUser = push(ref(database, "Data/OwnerListUser/User"));
     //  push(ref(database, "Data/OwnerListUser/Diposite"));
     //  push(ref(database, "Data/OwnerListUser/Withdrawal"));
-    const usersRef = push(ref(database, `Data/User/${MobileNumber}`));
+    const usersRef = push(ref(database, `Data/User/${MobileNumber}/Personal`));
     //  push(ref(database, `Data/User/${MobileNumber}/Diposite`));
     //  push(ref(database, `Data/User/${MobileNumber}/Withdrawal`));
     //  push(ref(database, `Data/User/${MobileNumber}/Product`));
     
+    const RefferalRef = push(ref(database, `Data/User/${RefferCode}/Reffer`));
+    
 
   CurrentUserID = usersRef.key
+  let RefferalID = RefferalRef.key;
   set(usersRef, {
    Name: UserName.value,
    Mobile: MobileNumber,
    Password: Password,
-   Balance: 0,
+   Balance: 10,
    Profit: 0,
-   Bank: null,
+   RefferCode: RefferCode,
+   RefferKey: RefferKey
 	}).then(() => {
 	location.reload();
 	}).catch((error) => {
 	alert("User Not Added. Error: " + error);
 	});
+
+  set(RefferalRef, {
+    Name: UserName.value,
+    Mobile: MobileNumber,
+    Balance: 0,
+    Profit: 0,
+   }).then(() => {
+   location.reload();
+   }).catch((error) => {
+   alert("User Not Added. Error: " + error);
+   });
   
 	set(OwnerListUser, {
     UserID: CurrentUserID,
@@ -124,7 +186,7 @@ RegisterBtn.addEventListener('click', async function(){
     Password: Password,
     Balance: 0,
     Profit: 0,
-    Bank: null,
+    RefferCode: RefferCode
     }).then(() => {
     alert("Account Registred");
     	  HomePage.style.display = "none"
@@ -173,7 +235,7 @@ LoginBtn.addEventListener("click", async function (e) {
   }
 
   if(error.code == "auth/invalid-login-credentials"){
-    alert("Mobile Number Not Registred Please Create a New Account")
+    alert("Wrong Password")
   }
 
 	}
@@ -197,10 +259,12 @@ LoginBtn.addEventListener("click", async function (e) {
     }
     });
 
-    onValue(ref(database, `Data/User/${localStorage.getItem("UserMobile")}`), (snapshot) => {
+
+
+    onValue(ref(database, `Data/User/${localStorage.getItem("UserMobile")}/Personal`), (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         // Get the key of the child data
-        const childKey = childSnapshot.key;
+        const childKey = childSnapshot.key
         
         // Extract data from the child snapshot
         const childData = childSnapshot.val();
@@ -209,15 +273,86 @@ LoginBtn.addEventListener("click", async function (e) {
         const NewBalance = childData.Balance;
         let Name = childData.Name;
         let Profit = childData.Profit;
-    
+        let RefferCode =  childData.RefferCode;
+        let RefferKey = childData.RefferKey;
+        // console.log("From Online ",Name)
         // Update the 'Balance' element with the retrieved value
         Balance.innerHTML = NewBalance;
          localStorage.setItem("Profit", Profit)
          localStorage.setItem("DataKey", childKey)
          localStorage.setItem("CurrentBalance", NewBalance)
          localStorage.setItem("NavUserName", Name)
+         localStorage.setItem("RefferCode", RefferCode)
+         localStorage.setItem("RefferID", RefferKey)
       });
     })
+
+    onValue(ref(database, `Data/User/${localStorage.getItem("UserMobile")}/Reffer`), (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        // Get the key of the child data
+        let RefferData = childSnapshot.val();
+
+        let Name = RefferData.Name;
+        let Mobile = RefferData.Mobile;
+        let Balance = RefferData.Balance;
+
+      let RefferDetails = `
+      <uni-view data-v-0406b02c="" class="bg-white margin-left-lg margin-top-xs text-black" style="border-bottom: 1px solid rgb(243, 243, 243);">
+      <uni-view data-v-0406b02c="" class="padding-tb-xs flex justify-between align-center">
+      <uni-view data-v-0406b02c="" class="flex"><uni-view data-v-0406b02c=""></uni-view><uni-view data-v-0406b02c="" class="text-cut">${Name}</uni-view></uni-view><uni-view data-v-0406b02c="" class="cuIcon-title text-white"></uni-view>
+      </uni-view>
+      <uni-view data-v-0406b02c="" class="padding-tb-xs padding-right-lg flex justify-between">
+      <uni-view data-v-0406b02c="" class="flex align-center text-sm"><uni-view data-v-0406b02c="">${Mobile}</uni-view></uni-view>
+      <uni-view data-v-0406b02c="" class="flex align-center">
+      <uni-view data-v-0406b02c="" class="text-black">
+      <uni-text data-v-0406b02c="" class="text-price"><span>${Balance}</span></uni-text>
+      </uni-view>
+      </uni-view>
+      </uni-view>
+      </uni-view>
+      `
+
+        RefferTeamBox.innerHTML += RefferDetails;
+      });
+    })
+
+    onValue(ref(database, `Data/User/${localStorage.getItem("UserMobile")}/Record`), (snapshot) => {
+      let RecordBox = document.getElementById("RecordBox")
+      snapshot.forEach((childSnapshot) => {
+        // Get the key of the child data
+        let RefferData = childSnapshot.val();
+
+        let Name = RefferData.Name;
+        let Date = RefferData.Date;
+        let Time = RefferData.Time;
+        let Amount = RefferData.Amount;
+        let Status = RefferData.Status
+
+      let RefferDetails = `
+      <uni-view data-v-0406b02c="" class="bg-white margin-left-lg margin-top-xs text-black my-2" style="border-bottom: 1px solid rgb(243, 243, 243);">
+      <uni-view data-v-0406b02c="" class="padding-tb-xs flex justify-between align-center">
+      <uni-view data-v-0406b02c="" class="flex"><uni-view data-v-0406b02c=""></uni-view><uni-view data-v-0406b02c="" class="text-cut">${Name}</uni-view></uni-view><uni-view data-v-0406b02c="" class="cuIcon-title text-white"></uni-view>
+      </uni-view>
+      <uni-view data-v-0406b02c="" class="padding-tb-xs padding-right-lg flex justify-between">
+      <uni-view data-v-0406b02c="" class="flex align-center text-sm"><uni-view data-v-0406b02c="">${Date} / ${Time}</uni-view></uni-view>
+      <uni-view data-v-0406b02c="" class="flex align-center">
+      <uni-view data-v-0406b02c="" class="text-black">
+      <uni-text data-v-0406b02c="" class="text-price"><span>${Amount}</span></uni-text>
+      </uni-view>
+      </uni-view>
+      <uni-view data-v-0406b02c="" class="flex align-center">
+      <uni-view data-v-0406b02c="" class="text-black">
+      <uni-text data-v-0406b02c="" class="text-price"><span>${Status}</span></uni-text>
+      </uni-view>
+      </uni-view>
+      </uni-view>
+      </uni-view>
+      `
+
+        RecordBox.innerHTML += RefferDetails;
+      });
+    })
+
 
 
     LogOutBtn.addEventListener("click", function() {
@@ -234,25 +369,45 @@ LoginBtn.addEventListener("click", async function (e) {
 
 let PaymentOrderBtn = document.querySelector("#PaymentOrderBtn")
 let WithdrawalBtn = document.querySelector("#WithdrawalBtn")
+let PaymentMethodBtn = document.getElementById("PaymentMethod");
+let Method;
+// console.log(PaymentMethod.value)
+PaymentMethodBtn.addEventListener("change", function(e){
+   Method = e.target.value
+   console.log(Method)
+})
+
   PaymentOrderBtn.addEventListener("click", function(e){
     e.preventDefault();
     alert("Wait Your Record In Proccess")
-    let PaymentMethod = document.getElementById("PaymentMethodName").value;
     let PaymentUserName = document.getElementById("PaymentUserName").value;
-    let PaymentUPI = document.getElementById("PaymentUPI").value;
     let PayAmount = document.getElementById("PayAmount").value;
     let PaymentDate = document.getElementById("PaymentDate").value;
     let PaymentTime = document.getElementById("PaymentTime").value;
     
-    let DipsoteRef = push(ref(database, "Data/OwnerListUser/Diposite"))
-     set(DipsoteRef, {
+    let UserRecordRef = push(ref(database, `Data/User/${localStorage.getItem("UserMobile")}/Record`))
+    let UserKey = UserRecordRef.key;
+    let OwnerDipositeRef = push(ref(database, "Data/OwnerListUser/Diposite"))
+     set(OwnerDipositeRef, {
         GameUser: localStorage.getItem("UserMobile"), 
         Name: PaymentUserName,
-        Method: PaymentMethod,
-        UPI: PaymentUPI,
+        Method: Method,
         Date: PaymentDate,
         Time: PaymentTime,
-        Amount: PayAmount
+        Amount: PayAmount,
+        UserKey: UserKey
+      }).then(() => {
+       console.log("Order Sended")
+      }).catch((error) => {
+      alert("Order Not Sended " + error);
+      });
+
+      set(UserRecordRef, {
+        Name: "Diposite Request",
+        Date: PaymentDate,
+        Time: PaymentTime,
+        Amount: PayAmount,
+        Status: "Pending"
       }).then(() => {
       alert("Order Sended");
       location.reload();
@@ -268,18 +423,44 @@ WithdrawalBtn.addEventListener("click", function(){
   alert("Your Request in Process")
   let WithdrawalAmount = document.getElementById("WithdrawalAmount").value;
   let WithdrawalUPI = document.getElementById("WithdrawalUPI").value;
- 
+  let UserRecordRef = push(ref(database, `Data/User/${localStorage.getItem("UserMobile")}/Record`))
+  let UserKey = UserRecordRef.key;
+  
+  
   let WithdrawalRef = push(ref(database, "Data/OwnerListUser/Withdrawal"))
+  let Tiime = new Date();
+  let CurrentDay = Tiime.getDate();
+  let CurrentMonth = Tiime.getMonth()+1;
+  let CurrentYear = Tiime.getFullYear()
+  let Hrs = Tiime.getHours();
+  let Min = Tiime.getMinutes();
+  let Sec = Tiime.getSeconds();
+  let CurrentDate = CurrentDay + "/" + CurrentMonth + "/" + CurrentYear;
+  let CurrentTime = Hrs + "/" + Min + "/" + Sec;
   set(WithdrawalRef, {
      GameUser: localStorage.getItem("UserMobile"), 
      UPI: WithdrawalUPI,
-     Amount: WithdrawalAmount
+     Amount: WithdrawalAmount,
+     UserKey: UserKey
    }).then(() => {
    alert("Order Sended");
    location.reload();
    }).catch((error) => {
    alert("Order Not Sended " + error);
    });
+
+   set(UserRecordRef, {
+    Amount: WithdrawalAmount,
+    Name: "Withdrawal Request",
+    Time: CurrentTime,
+    Date: CurrentDate,
+    Status: "Pending"
+  }).then(() => {
+  alert("Order Sended");
+  location.reload();
+  }).catch((error) => {
+  alert("Order Not Sended " + error);
+  });
   
 
 })
@@ -290,13 +471,13 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
 
   // Calculate the new balance
-  const newAmount = 0
+  const newAmount = 10
 
   // Check if the newAmount is greater than or equal to the current balance
   if (newAmount > localStorage.getItem("CurrentBalance")) {
@@ -310,7 +491,7 @@ EliteProductBuyBtn.addEventListener("click", function (e) {
         update(DipsoteRef, { Profit: NewProfit })
       .then(() => {
           alert("Product Added")
-          localStorage.setItem("FreeProduct")
+          localStorage.setItem("FreeProduct", true)
       })
       .catch((error) => {
         alert("Failed to update amount: " + error);
@@ -334,7 +515,7 @@ EliteProProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -372,7 +553,7 @@ SilverProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -410,7 +591,7 @@ SilverProProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -448,7 +629,7 @@ GoldProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -486,7 +667,7 @@ DiamondProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -524,7 +705,7 @@ PremiumProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -562,7 +743,7 @@ PremiumProProductBuyBtn.addEventListener("click", function (e) {
   e.preventDefault();
   // Alert to indicate that the product has been added
   // Construct the record key
-  const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
+   const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
 
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
@@ -596,7 +777,22 @@ alert("Insufficient balance");
 });
 
 
+
+onValue(ref(database, `Data/User/${localStorage.getItem("RefferCode")}/Personal`), (snapshot) => {
+  snapshot.forEach((childSnapshot) => {
+    // Get the key of the child data
+    const childKey = childSnapshot.key
+    
+    // Extract data from the child snapshot
+    const childData = childSnapshot.val();
+    let CurrentBalanceOfRefferalUser = childData.Balance;
+    localStorage.setItem("CurrentReffer", CurrentBalanceOfRefferalUser);
+  });
+})
+
 let DailyCheckIn = document.querySelector("#DailyCheckIn");
+
+console.log("Mob", localStorage.getItem("RefferCode"), "ID", localStorage.getItem("RefferID"))
 
 DailyCheckIn.addEventListener("click", function(){
   // Check if the user has seen the message today
@@ -607,20 +803,26 @@ const currentDate = new Date().toLocaleDateString();
 
 // If the user hasn't seen the message today, show it and update the local storage
 if (hasSeenMessageToday !== currentDate) {
-  alert("Today Profit Claimed");
-  localStorage.setItem('hasSeenMessageToday', currentDate)
-	const recordKey = `${localStorage.getItem("UserMobile")}/${localStorage.getItem("DataKey")}`;
 
+  localStorage.setItem('hasSeenMessageToday', currentDate)
+	const recordKey = `${localStorage.getItem("UserMobile")}/Personal/${localStorage.getItem("DataKey")}`;
   // Reference to the specific record in the database
   const DipsoteRef = ref(database, `Data/User/${recordKey}`);
+  const RefferalBonus = ref(database, `Data/User/${localStorage.getItem("RefferCode")}/Personal/${localStorage.getItem("RefferID")}`);
+
+
 
   let DailyCheckInAmount = parseInt(localStorage.getItem("CurrentBalance"))+parseInt(localStorage.getItem("Profit"))
+  let Bonus = localStorage.getItem("Profit")/30
+ 
 
   update(DipsoteRef, { Balance: DailyCheckInAmount })
+  update(RefferalBonus, { Balance: parseInt(localStorage.getItem("CurrentReffer")) + parseInt(localStorage.getItem("Profit")/2)})
+
   .then(()=>{
      alert("Amount Added")
-     console
-     DailyCheckIn.style.display = localStorage.getItem("24Condition")
+     
+     DailyCheckIn.disabled = localStorage.getItem("24Condition")
   })
   .catch(()=>{
     alert("Network Issue")
@@ -707,3 +909,26 @@ OrderPageBtn.addEventListener("click", function(){
   OrderPage.style.display = "block"
 })
 
+RecordPageBtn.addEventListener("click", function(){
+  hidePages();
+
+  RecordPage.style.display = "block"
+})
+
+TeamPageBtn.addEventListener("click", function(){
+  hidePages();
+
+  TeamPage.style.display = "block"
+})
+
+SharePageBtn.addEventListener("click", function(){
+  hidePages();
+
+  SharePage.style.display = "block"
+})
+
+ProfitPageBtn.addEventListener("click", function(){
+  hidePages();
+
+  ProfitPage.style.display = "block"
+})
